@@ -14,3 +14,10 @@
 /JobSchedulingDev/JobScheduling.Common/obj
 /JobSchedulingDev/JobScheduling.Business/bin
 /JobSchedulingDev/JobScheduling.Business/obj
+/JobSchedulingDev/*.suo
+/JobSchedulingDev/JobScheduling.Business/*.user
+/JobSchedulingDev/JobScheduling.Common/*.user
+/JobSchedulingDev/JobScheduling.DataAccess/*.user
+/JobSchedulingDev/JobScheduling.DBCommon/*.user
+/JobSchedulingDev/JobScheduling.Model/*.user
+/JobSchedulingDev/JobScheduling.Web/*.user
