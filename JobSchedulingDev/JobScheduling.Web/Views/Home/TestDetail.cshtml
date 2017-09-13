@@ -1,0 +1,681 @@
+﻿@{
+    ViewBag.Title = "Project Log Book";
+}
+@section Scripts{
+    <script src="~/Scripts/Shared/SelectBox.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var ft_1 = 10;
+            var ft_2 = 20;
+            var ft_3 = 15;
+            var ft_4 = 20;
+            var ft_5 = 15;
+
+            var pib_1 = 15;
+            var pib_2 = 15;
+            var pib_3 = 30;
+            var pib_4 = 20;
+
+            $(".div_projectLogBook_all").css("width", $(window).width() - 250);
+
+            $(".textarea_detail").css({
+                "max-height": "60px",
+                "width": "66%",
+                "resize": "none",
+                "background-color" : "rgb(230, 238, 240) !Important"
+            });
+
+            $(".content_gridview_header").css({
+                "width": "100%",
+                "margin" : "2px 0 0 0"
+            });
+
+            $(".content_gridview_row").css({
+                "width": "100%",
+            });
+
+            $(".content_gridview_header.FunctionDetail").each(function () {
+                $(this).find("ul li").eq(0).css("width", ft_1 + "%");
+                $(this).find("ul li").eq(1).css("width", ft_2 + "%");
+                $(this).find("ul li").eq(2).css("width", ft_3 + "%");
+                $(this).find("ul li").eq(3).css("width", ft_4 + "%");
+                $(this).find("ul li").eq(4).css("width", ft_5 + "%");
+            });
+
+            $(".content_gridview_row.FunctionDetail").each(function () {
+                $(this).find("ul li").eq(0).css("width", ft_1 + "%");
+                $(this).find("ul li").eq(1).css("width", ft_2 + "%");
+                $(this).find("ul li").eq(2).css("width", ft_3 + "%");
+                $(this).find("ul li").eq(3).css("width", ft_4 + "%");
+                $(this).find("ul li").eq(4).css("width", ft_5 + "%");
+            });
+
+            $(".content_gridview_header.ProjectIncomeBreakdown").each(function () {
+                $(this).find("ul li").eq(0).css("width", pib_1 + "%");
+                $(this).find("ul li").eq(1).css("width", pib_2 + "%");
+                $(this).find("ul li").eq(2).css("width", pib_3 + "%");
+                $(this).find("ul li").eq(3).css("width", pib_4 + "%");
+            });
+
+            $(".content_gridview_row.ProjectIncomeBreakdown").each(function () {
+                $(this).find("ul li").eq(0).css("width", pib_1 + "%");
+                $(this).find("ul li").eq(1).css("width", pib_2 + "%");
+                $(this).find("ul li").eq(2).css("width", pib_3 + "%");
+                $(this).find("ul li").eq(3).css("width", pib_4 + "%");
+            });
+
+            $(".content_gridview_header.BudgetCostDetail").each(function () {
+                $(this).find("ul li").eq(0).css("width", pib_1 + "%");
+                $(this).find("ul li").eq(1).css("width", pib_2 + "%");
+                $(this).find("ul li").eq(2).css("width", pib_3 + "%");
+                $(this).find("ul li").eq(3).css("width", pib_4 + "%");
+            });
+
+            $(".content_gridview_row.BudgetCostDetail").each(function () {
+                $(this).find("ul li").eq(0).css("width", pib_1 + "%");
+                $(this).find("ul li").eq(1).css("width", pib_2 + "%");
+                $(this).find("ul li").eq(2).css("width", pib_3 + "%");
+                $(this).find("ul li").eq(3).css("width", pib_4 + "%");
+            });
+
+            $(".div_paging").css("width", "100%");
+        });
+
+        function toggleContent(module) {
+            $(".div_projectFunction_content." + module).toggle();
+            if ($(".div_projectFunction_content." + module).css("display") == "none") {
+                $(".div_projectFunction_hide." + module + " a").html("Show");
+            } else {
+                $(".div_projectFunction_hide." + module + " a").html("Hide");
+            }
+        }
+    </script>
+    <style type="text/css">
+        .div_projectLogBook_all{
+            margin: 5px 5px 5px 5px;
+            min-width: 870px;
+        }
+        .div_projectInfoRow {
+            display: inline-block;
+            width: 100%;
+        }
+        .div_projectInfo {
+            margin: 5px 0 10px 0;
+            width: 100%;
+        }
+        .div_projectInfo_flow {
+            margin: 20px 0 4px 0;
+            width: 100%;
+            display: inline-block;
+        }
+        .div_projectInfo_title {
+            font-size: 20px;
+            padding: 2px;
+            margin: 0 0 5px 0;
+            width: 98%;
+            font-weight: bold;
+        }
+        .div_projectLogBook_longContent {
+            width: 100%;
+            display: inline-block;
+            margin: 5px 0 0 0;
+            float: left;
+        }
+            .div_projectLogBook_longContent span {
+                font-size: 18px;
+                display: inline-block;
+                /*vertical-align: top;*/
+            }
+            .div_projectLogBook_longContent span.title {
+                width: 130px;
+                float: left;
+            }
+            .div_projectLogBook_longContent span.longContent {
+                width: 83%;
+                float: left;
+                word-wrap: break-word;
+            }
+                .div_projectLogBook_longContent span.longContent.view {
+                    background-color: rgb(230, 238, 240);
+                }
+        .div_projectLogBook_shortContent {
+            width: 50%;
+            display: inline-block;
+            margin: 5px 0 0 0;
+            float: left;
+        }
+            .div_projectLogBook_shortContent span {
+                font-size: 18px;
+                display: inline-block;
+                /*vertical-align: top;*/
+            }
+            .div_projectLogBook_shortContent span.title {
+                width: 130px;
+                float: left;
+            }
+            .div_projectLogBook_shortContent span.shortContent {
+                width: 66%;
+                word-wrap: break-word;
+                float: left;
+            }
+                .div_projectLogBook_shortContent span.shortContent.view {
+                    background-color: rgb(230, 238, 240);
+                }
+            .div_projectFunction_header {
+            display: inline-block;
+            width: 100%;
+        }
+        .div_projectFunction_title {
+            font-size: 20px;
+            float: left;
+            margin: 0 0 0 5px;
+            font-weight: bold;
+        }
+        .div_projectFunctions {
+            float: left;
+            margin: 11px 0 0 25px;
+        }
+            .div_projectFunctions a {
+                margin: 0 20px 0 0;
+                color: #ff8500;
+            }
+        .div_projectFunction_hide {
+            float: right;
+            margin: 11px 0 0 0;
+        }
+            .div_projectFunction_hide a {
+                color: #ff8500;
+                cursor: pointer;
+            }
+        .div_projectFunction_baseLine {
+            display:inline-block;
+            width: 100%;
+            height: 2px;
+            background-color: #ff8500;
+        }
+        .div_projectFunction_content {
+            display: inline-block;
+            width: 98%;
+        }
+        .selectedContent {
+            width: 99%;
+        }
+        .errors {
+            font-size: 12px !Important;
+            color: #ff8500;
+            /*vertical-align: baseline !Important;*/
+        }
+    </style>
+    }
+@section secFunctionBar{
+
+    <ul class="dark_color5">
+        <li>
+            <a href="#">
+                <span class="back">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Back
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="new">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                New
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="edit">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Edit
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="del">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Del
+            </a>
+        </li>
+    </ul>
+}
+<div class="div_projectLogBook_all">
+    <div class="div_projectInfo">
+        @using (Html.BeginForm())
+        { 
+            <div class="div_projectInfo_title">
+                Project Info
+            </div>
+            <div class="div_projectInfoRow">
+                <div class="div_projectLogBook_longContent">
+                    <span class="title">Project <span class="requireText">*</span></span>
+                    <span class="longContent view">AM00-01 --- Food & Drinks Advertisement</span>
+                </div>
+            </div>
+            <div class="div_projectInfoRow">
+                <div class="div_projectLogBook_shortContent">
+                    <span class="title">Project Status <span class="requireText">*</span></span>
+                    <span class="shortContent view">O - Open / V- Void</span>
+                </div>
+                <div class="div_projectLogBook_shortContent">
+                    <span class="title">Manager <span class="requireText">*</span></span>
+                    <span class="shortContent view">Peter Tam</span>
+                </div>
+            </div>
+            <div class="div_projectInfoRow">
+                <div class="div_projectLogBook_shortContent">
+                <span class="title">Team <span class="requireText">*</span></span>
+                <span class="shortContent view">Team A</span>
+            </div>
+            <div class="div_projectLogBook_shortContent">
+                <span class="title">Customer <span class="requireText">*</span></span>
+                <span class="shortContent view">A0008 - Tai Ming Company Limited</span>
+            </div>
+            </div>
+            
+            <div class="div_projectInfoRow">
+                <div class="div_projectLogBook_shortContent">
+                <span class="title">Service <span class="requireText">*</span></span>
+                <textarea class="textarea_detail" readonly="readonly" onfocus="blur()" style="background-color: rgb(230, 238, 240) !Important">PERFM - Performance</textarea>
+            </div>
+            <div class="div_projectLogBook_shortContent">
+                <span class="title">SubType </span>
+                <textarea class="textarea_detail" readonly="readonly" onfocus="blur()" style="background-color: rgb(230, 238, 240) !Important">A0008 - Food & Drinks</textarea>
+            </div>
+            </div>
+            
+        }
+    </div>
+    <div class="div_projectInfo">
+        @using (Html.BeginForm())
+        { 
+            <div class="div_projectInfo_title">
+                Project Info
+            </div>
+            <div class="div_projectInfoRow">
+                <div class="div_projectLogBook_longContent">
+                    <span class="title">Project <span class="requireText">*</span></span>
+                    <span class="longContent">
+                        <input type="button" value="select "/>
+                        <span class="errors">* Required</span>
+                        <span class="selectedContent">CCAS-001</span>
+                    </span>
+                </div>
+            </div>
+            <div class="div_projectInfoRow">
+                <div class="div_projectLogBook_shortContent">
+                    <span class="title">Project Status <span class="requireText">*</span></span>
+                    <span class="shortContent">
+                        <select>
+                        <option value="">-----------</option>
+                        <option selected="selected" value="O">Open</option>
+                        <option value="V">Void</option>
+                    </select>
+                        <span class="errors">* Required</span>
+                    </span>
+                </div>
+                <div class="div_projectLogBook_shortContent">
+                    <span class="title">Manager <span class="requireText">*</span></span>
+                    <span class="shortContent">
+                        <select class="cutOption">
+                        <option value="">-----------</option>
+                        <option value="a">a</option>
+                        <option value="amy1">Amy</option>
+                        <option value="may">May</option>
+                        <option value="sze">Sze</option>
+                        <option value="ted">ted</option>
+                        <option value="test">TEST</option>
+                        <option selected="selected" value="TestUser">TestUser</option>
+                    </select>
+                        <span class="errors">* Required</span>
+                    </span>
+                </div>
+            </div>
+            <div class="div_projectInfoRow">
+                <div class="div_projectLogBook_shortContent">
+                <span class="title">Team <span class="requireText">*</span></span>
+                    <span class="shortContent">
+                        <select class="cutOption">
+                        <option value="">-----------</option>
+                        <option value="T0003">Tim Chen</option>
+                        <option value="T0004">Ming Ou</option>
+                        <option value="T0005">Virgil Chen</option>
+                        <option value="T0006">Edgar Ng</option>
+                        <option value="T0007">Huskar Lai</option>
+                        <option value="T0008">Allen Xiao</option>
+                        <option value="T0009">Mark Mai</option>
+                        <option value="T0010">James Chen</option>
+                        <option value="T0011">Ben Yeung</option>
+                        <option value="T0012">Jason Yiu</option>
+                        <option value="T0013">Vincent Chen</option>
+                        <option value="T0014">Ken Tam</option>
+                        <option value="T0015">Sisley Ng</option>
+                        <option value="T0016">Donny Wong</option>
+                        <option value="测试">测试Name</option>
+                        <option value="TeamA">TeamA</option>
+                        <option value="tdsgsdgsd">sdffg</option>
+                        <option value="Teefd">dfsfAA</option>
+                        <option value="test2">fasdf</option>
+                        <option value="T0017">EG IT GZ QA</option>
+                        <option selected="selected" value="Bbbbbbbbbbbbbbbbbbbbbbbbb">yoyobBbbbbbbbbbbbbbbbbbbbbbbbbBbbbbbbbbbbbbbbbbbbb</option>
+                        <option value="ff dd ff">ff dd ff</option>
+                        <option value="rr tt">rrr</option>
+                        <option value="123">12345678901234567890123456789012345678901234567890</option>
+                        <option value="team code yoga">team name yoga</option>
+                    </select>
+                        <span class="errors">* Required</span>
+                    </span>
+            </div>
+            <div class="div_projectLogBook_shortContent">
+                <span class="title">Customer <span class="requireText">*</span></span>
+                <span class="shortContent">
+                    <input type="button" value="select "/>
+                    <span class="errors">* Required</span>
+                    <span class="selectedContent">Chen XiangMu</span>
+                </span>
+            </div>
+            </div>
+            
+            <div class="div_projectInfoRow">
+                <div class="div_projectLogBook_shortContent">
+                <span class="title">Service <span class="requireText">*</span></span>
+                <span class="shortContent">
+                    <select class="cutOption">
+                        <option title="-----------" value="">-----------</option>
+                        <option title="S0001-The concert" value="S0001">S0001-The concert</option>
+                        <option title="S0002-stage" value="S0002">S0002-stage</option>
+                        <option title="S0003-Makeup" value="S0003">S0003-Makeup</option>
+                        <option title="S0004-hair" value="S0004">S0004-hair</option>
+                        <option title="S0006-Catwalk shows" value="S0006">S0006-Catwalk shows</option>
+                        <option title="S0007-The rehearsal" value="S0007">S0007-The rehearsal</option>
+                        <option title="S0008-Please the teacher teach singing training" value="S0008">S0008-Please the teacher teach...</option>
+                        <option title="S0009-Dance practice" value="S0009">S0009-Dance practice</option>
+                        <option title="S0010-Out of the record" value="S0010">S0010-Out of the record</option>
+                        <option title="S0011-National tour" value="S0011">S0011-National tour</option>
+                        <option title="S0012-Making a movie" value="S0012">S0012-Making a movie</option>
+                        <option title="S0013-" value="S0013">S0013-</option>
+                        <option title="S0014-The announcement" value="S0014">S0014-The announcement</option>
+                        <option title="S0015-EG IT GZ QA" value="S0015">S0015-EG IT GZ QA</option>
+                        <option title="aaaaaaaaaaaaaa-yoyoyoyoaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaa" selected="selected" value="aaaaaaaaaaaaaa">aaaaaaaaaaaaaa-yoyoyoyoaaAaaaa...</option>
+                        <option title="PERFM-Performance" value="PERFM">PERFM-Performance</option>
+                        <option title="service code yoga-service description yoga" value="service code yoga">service code yoga-service desc...</option>
+                    </select>
+                    <span class="errors">* Required</span>
+                </span>
+            </div>
+            <div class="div_projectLogBook_shortContent">
+                <span class="title">SubType </span>
+                <span class="shortContent">
+                    <select class="cutOption">
+                    <option value="">-----------</option>
+                    <option value="Delete">Delete-Delete the selected sub types. </option>
+                    <option value="Print">Print-Export the selected sub types to .pdf. You can then easily print them. </option>
+                    <option value="Export">Export-Export the selected sub types to CSV. You can then print them, or use the data for further calculations.
+                    </option>
+                    <option value="Incident sub types">Incident sub types-Incident sub types
+ control which fields appear on the SR form in the Service Desk and on 
+the Submit Incident form on the End User Portal.</option>
+                    <option value="Change/Problem/Request">Change/Problem/Request-Change, 
+problem, and request sub types control which workflow tabs appear on a 
+change, problem, or request and which fields appear on non-workflow tabs
+ of a change, problem, or request.</option>
+                    <option value="Normal">Normal-Normal</option>
+                    <option value="Emergency">Emergency-Emergency</option>
+                    <option value="Advanced">Advanced-Advanced</option>
+                    <option value="Basic">Basic-Basicfdsf</option>
+                    <option value="QA">QA-</option>
+                    <option value="aaAaaaaaaaaaaaaaaaaaaaaaa">aaAaaaaaaaaaaaaaaaaaaaaaa-aaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaa
+ 
+AaaaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaAaaaaaaaaaaaaaaaaaaaaaaaaaa</option>
+                    <option value="aaabbbbbbbbbaaa">aaabbbbbbbbbaaa-yoyoyoaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaaaaabbbbbbbbbaaa</option>
+                    <option value="A0008">A0008-Food &amp; Drinks</option>
+                    <option selected="selected" value="subtype code yoga">subtype code yoga-subtype description yoga</option>
+                </select>
+                    <span class="errors">* Required</span>
+                </span>
+            </div>
+            </div>
+            <div class="div_projectInfoRow">
+                <div class="div_projectLogBook_shortContent">
+                    <span class="title">Test <span class="requireText">*</span></span>
+                    <span class="shortContent">
+                        <input type="text"/>
+                        <span class="errors">* Required</span>
+                    </span>
+                </div>
+                <div class="div_projectLogBook_shortContent">
+                    <span class="title">Test2 <span class="requireText">*</span></span>
+                    <span class="shortContent">
+                        <input type="text"/>
+                        <span class="errors">* Required</span>
+                    </span>
+                </div>
+            </div>
+            <div class="div_projectInfoRow">
+                <div class="div_projectLogBook_longContent">
+                    <span class="longContent">
+                        <span class="errors">this is the error message, please try again!</span>
+                    </span>
+                </div>
+            </div>
+            <div class="div_projectInfoRow">
+                <div class="div_projectLogBook_longContent">
+                    <span class="longContent">
+                        <input type="button" class="input_ok"/>
+                        <input type="submit" onclick="javascript: return false;" class="input_back"/>
+                    </span>
+                </div>
+            </div>
+            
+        }
+    </div>
+
+    <div class="div_projectInfo_flow">
+        <div class="div_projectFunction_header">
+            <div class="div_projectFunction_title">
+                Function Detail
+            </div>
+            <div class="div_projectFunctions">
+                <a href="#">[ New ]</a>
+                <a href="#">[ EDIT ]</a>
+                <a href="#">[ Del ]</a>
+                <a href="#">[ Detail ]</a>
+            </div>
+            <div class="div_projectFunction_hide">
+                <a onclick="toggleContent('FunctionDetail')">Hide
+                </a>
+                <span class="span_dropicon">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+            </div>
+        </div>
+        <div class="div_projectFunction_baseLine"></div>
+        <div class="div_projectFunction_content FunctionDetail">
+            <div class="content_gridview_header FunctionDetail">
+                <ul>
+                    <li>Artiste</li>
+                    <li>FunctionDescription</li>
+                    <li>EventDate</li>
+                    <li>EventTime</li>
+                    <li>Venue</li>
+                </ul>
+            </div>
+            <div class="content_gridview_row odd FunctionDetail">
+            <ul>
+                <li>Joyce Yip</li>
+                <li>Perform 3 Songs</li>
+                <li>01/01/2011</li>
+                <li>4:00pm-5:00pm</li>
+                <li>大大廣場</li>
+            </ul>
+        </div>
+            <div class="content_gridview_row even FunctionDetail">
+                <ul>
+                    <li>Joyce Yip</li>
+                    <li>Perform 3 Songs</li>
+                    <li>01/01/2011</li>
+                    <li>4:00pm-5:00pm</li>
+                    <li>大大廣場</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="div_projectInfo_flow">
+        <div class="div_projectFunction_header">
+            <div class="div_projectFunction_title">
+                Agreement Reference
+            </div>
+            <div class="div_projectFunctions">
+                <a href="#">[ New ]</a>
+                <a href="#">[ EDIT ]</a>
+                <a href="#">[ Del ]</a>
+                <a href="#">[ Detail ]</a>
+            </div>
+            <div class="div_projectFunction_hide AgreementReference">
+                <a onclick="toggleContent('AgreementReference')">Hide
+                </a>
+                <span class="span_dropicon">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+            </div>
+        </div>
+        <div class="div_projectFunction_baseLine"></div>
+        <div class="div_projectFunction_content AgreementReference">
+            <div class="div_projectInfoRow">
+                <div class="div_projectLogBook_shortContent">
+                    <span class="title">Agreement No.<span class="requireText">*</span></span>
+                    <span class="shortContent view">AT003-00000001-00</span>
+                </div>
+                <div class="div_projectLogBook_shortContent">
+                    <span class="title">Issue Date</span>
+                    <span class="shortContent view">01/03/2013</span>
+                </div>
+            </div>
+            <div class="div_projectInfoRow">
+                <div class="div_projectLogBook_shortContent">
+                    <span class="title">Resp. Person</span>
+                    <span class="shortContent view">May Lee</span>
+                </div>
+                <div class="div_projectLogBook_shortContent">
+                    <span class="title">Contract Support  Staff</span>
+                    <span class="shortContent view">John Wong</span>
+                </div>
+            </div>
+            <div class="div_projectInfoRow">
+                <div class="div_projectLogBook_longContent">
+                    <span class="title">Artist</span>
+                    <span class="longContent view">JY - Joyce Yip, EL - Eric Lee</span>
+                </div>
+            </div>
+            <div class="div_projectInfoRow">
+                <div class="div_projectLogBook_shortContent">
+                    <span class="title">Period From</span>
+                    <span class="shortContent view">01/03/2013</span>
+                </div>
+                <div class="div_projectLogBook_shortContent">
+                    <span class="title">Period To</span>
+                    <span class="shortContent view">01/05/2013</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="div_projectInfo_flow">
+        <div class="div_projectFunction_header">
+            <div class="div_projectFunction_title">
+                Project Income
+            </div>
+            <div class="div_projectFunctions">
+                <a href="#">[ New ]</a>
+                <a href="#">[ EDIT ]</a>
+                <a href="#">[ Del ]</a>
+                <a href="#">[ Detail ]</a>
+            </div>
+            <div class="div_projectFunction_hide ProjectIncome">
+                <a onclick="toggleContent('ProjectIncome')">Hide
+                </a>
+                <span class="span_dropicon">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+            </div>
+        </div>
+        <div class="div_projectFunction_baseLine"></div>
+        <div class="div_projectFunction_content ProjectIncome">
+        </div>
+    </div>
+    <div class="div_projectInfo_flow">
+        <div class="div_projectFunction_header">
+            <div class="div_projectFunction_title">
+                Cost Summary
+            </div>
+            <div class="div_projectFunctions">
+                <a href="#">[ New ]</a>
+                <a href="#">[ EDIT ]</a>
+                <a href="#">[ Del ]</a>
+                <a href="#">[ Detail ]</a>
+            </div>
+            <div class="div_projectFunction_hide CostSummary">
+                <a onclick="toggleContent('CostSummary')">Hide
+                </a>
+                <span class="span_dropicon">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+            </div>
+        </div>
+        <div class="div_projectFunction_baseLine"></div>
+        <div class="div_projectFunction_content CostSummary">
+        </div>
+    </div>
+    <div class="div_projectInfo_flow">
+        <div class="div_projectFunction_header">
+            <div class="div_projectFunction_title">
+                Project Income Breakdown
+            </div>
+            <div class="div_projectFunctions">
+                <a href="#">[ New ]</a>
+                <a href="#">[ EDIT ]</a>
+                <a href="#">[ Del ]</a>
+                <a href="#">[ Detail ]</a>
+                <a href="#">[ BudgetCostDetail ]</a>
+            </div>
+            <div class="div_projectFunction_hide BudgetCostDetail">
+                <a onclick="toggleContent('BudgetCostDetail')">Hide
+                </a>
+                <span class="span_dropicon">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+            </div>
+        </div>
+        <div class="div_projectFunction_baseLine"></div>
+        <div class="div_projectFunction_content BudgetCostDetail">
+            
+        </div>
+    </div>
+    <div class="div_projectInfo_flow">
+        <div class="div_projectFunction_header">
+            <div class="div_projectFunction_title">
+                Budget Cost
+            </div>
+            <div class="div_projectFunctions">
+                <a href="#">[ New ]</a>
+                <a href="#">[ EDIT ]</a>
+                <a href="#">[ Del ]</a>
+                <a href="#">[ Detail ]</a>
+            </div>
+            <div class="div_projectFunction_hide BudgetCost">
+                <a onclick="toggleContent('BudgetCost')">Hide
+                </a>
+                <span class="span_dropicon">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+            </div>
+        </div>
+        <div class="div_projectFunction_baseLine"></div>
+        <div class="div_projectFunction_content BudgetCost">
+        </div>
+    </div>
+</div>

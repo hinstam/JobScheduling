@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Project Log Book";
+}
+@section Scripts{
+    <style type="text/css">
+        .div_projectLogBook_all{
+            margin: 5px 5px 5px 5px;
+        }
+        .div_projectInfo.header {
+            margin: 5px 0 10px 0;
+            width: 70%;
+        }
+        .div_projectInfo_title {
+            font-size: 20px;
+            padding: 2px;
+            margin: 0 0 5px 0;
+            width: 100%;
+            font-weight: bold;
+        }
+        .div_projectLogBook_longContent {
+            width: 98%;
+            display: inline-block;
+            margin: 6px 0 0 0;
+        }
+            .div_projectLogBook_longContent span {
+                font-size: 20px;
+                display: inline-block;
+            }
+            .div_projectLogBook_longContent span.title {
+                width: 20%;
+            }
+        .div_projectLogBook_shortContent {
+            width: 49%;
+            display: inline-block;
+            margin: 6px 0 0 0;
+        }
+            .div_projectLogBook_shortContent span {
+                font-size: 20px;
+                display: inline-block;
+            }
+            .div_projectLogBook_shortContent span.title {
+                width: 40%;
+            }
+    </style>
+    }
+<div class="div_projectLogBook_all">
+    <div class="div_projectInfo header">
+        @using (Html.BeginForm())
+        { 
+            <div class="div_projectInfo_title">
+                Project Info
+            </div>
+            <div class="div_projectLogBook_longContent">
+                <span class="title">Project <span class="requireText">*</span></span>
+                <input type="text" name=""/>
+            </div>
+            <div class="div_projectLogBook_shortContent">
+                <span class="title">Team <span class="requireText">*</span></span>
+                <input type="text" name=""/>
+            </div>
+            <div class="div_projectLogBook_shortContent">
+                <span class="title">Manager <span class="requireText">*</span></span>
+                <input type="text" name=""/>
+            </div>
+            <div class="div_projectLogBook_shortContent">
+                <span class="title">Service <span class="requireText">*</span></span>
+                <input type="text" name=""/>
+            </div>
+            <div class="div_projectLogBook_shortContent">
+                <span class="title">SubType </span>
+                <input type="text" name=""/>
+            </div>
+            <div class="div_projectLogBook_shortContent">
+                <span class="title">Customer <span class="requireText">*</span></span>
+                <input type="text" name=""/>
+            </div>
+            <div class="div_projectLogBook_shortContent">
+                <span class="title">Project Status <span class="requireText">*</span></span>
+                <input type="text" name=""/>
+            </div>
+    }
+    </div>
+</div>

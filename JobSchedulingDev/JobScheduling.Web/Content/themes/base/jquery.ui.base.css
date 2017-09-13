@@ -1,0 +1,21 @@
+/*!
+ * jQuery UI CSS Framework 1.8.24
+ *
+ * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
+ * Licensed under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming
+ */
+@Import url("jquery.ui.core.css");
+
+@Import url("jquery.ui.accordion.css");
+@Import url("jquery.ui.autocomplete.css");
+@Import url("jquery.ui.button.css");
+@Import url("jquery.ui.datepicker.css");
+@Import url("jquery.ui.dialog.css");
+@Import url("jquery.ui.progressbar.css");
+@Import url("jquery.ui.resizable.css");
+@Import url("jquery.ui.selectable.css");
+@Import url("jquery.ui.slider.css");
+@Import url("jquery.ui.tabs.css");

@@ -1,0 +1,59 @@
+﻿@model System.Data.DataTable
+
+ 
+@{
+    
+    if (Model != null)
+    {
+    <div class="content_gridview_header">
+        <ul>
+            @{
+        int k = 0;
+        foreach (System.Data.DataColumn item in Model.Columns)
+        {
+                <li  class="@Html.Raw(k++ == 0 ? "code_Hidden" : string.Empty)">@item.ColumnName</li>
+        }
+            }
+        </ul>
+    </div>
+        if (Model.Rows.Count > 0)
+        {
+            int i = 0;
+            foreach (System.Data.DataRow itemRow in Model.Rows)
+            { 
+    <div class="@Html.Raw(i++ % 2 == 0 ? "content_gridview_row odd" : "content_gridview_row evan")">
+        <ul>
+            @{int j = 0;
+              foreach (var itemColumn in itemRow.ItemArray)
+              {
+                  if ("true".Equals(itemColumn.ToString().ToLower()) || "false".Equals(itemColumn.ToString().ToLower()))
+                  {
+                      if (Convert.ToBoolean(itemColumn))
+                      {                  
+                <li>Yes</li>
+                      }
+                      else
+                      {
+                <li>No</li>
+                      }
+                  }
+                  else
+                  {                    
+                <li columnName="@itemRow.Table.Columns[j].ColumnName"  class="@Html.Raw(j++ == 0 ? "code_Hidden" : string.Empty)">@itemColumn.ToString()</li>
+                  }
+              }
+            }
+        </ul>
+    </div>
+            }
+        }
+        else
+        {
+    <div style="width: 100%; text-align: center; font-size: larger; padding: 10px 0 10px 0; font-weight: bold;">NO Data</div>
+        }
+    }
+    else
+    {
+    <div style="width: 100%; text-align: center; font-size: larger; padding: 10px 0 10px 0; font-weight: bold;">NO Data</div>
+    }
+}

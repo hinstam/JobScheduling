@@ -1,0 +1,82 @@
+﻿@model JobScheduling.Entity.CommModel.PagingModel
+
+
+ 
+@{
+    if (Model.DataTable != null)
+    {
+    <div class="content_gridview_header">
+        <ul>
+            @{
+        int k = 0;
+        foreach (System.Data.DataColumn item in Model.DataTable.Columns)
+        {
+            <li class="@Html.Raw(k == 0 || k==1 ? " code_Hidden " : " ") @ViewBag.Title@k" >@item.ColumnName</li>
+            k++;
+        }
+       
+            }
+        </ul>
+    </div>
+        if (Model.DataTable.Rows.Count > 0)
+        {
+            int i = 0;
+            foreach (System.Data.DataRow itemRow in Model.DataTable.Rows)
+            { 
+    <div class="@Html.Raw(i++ % 2 == 0 ? "content_gridview_row odd" : "content_gridview_row evan")">
+        <ul>
+            @{ int j = 0;
+               foreach (var itemColumn in itemRow.ItemArray)
+               {
+                   if ("true".Equals(itemColumn.ToString().ToLower()) || "false".Equals(itemColumn.ToString().ToLower()))
+                   {
+                       if (Convert.ToBoolean(itemColumn))
+                       {                  
+                <li>Yes</li>
+                       }
+                       else
+                       {
+                <li>No</li>
+                       }
+                   }
+                   else if(j==3)
+                  {
+                      string filePath=@itemColumn.ToString();
+                     <li columnName="@itemRow.Table.Columns[j].ColumnName" ><a href="@filePath" style="margin-left:5px;">@filePath.Substring(filePath.LastIndexOf('/')+1)</a></li>
+                      j++;
+                  }
+                   else
+                   {
+                      <li columnName="@itemRow.Table.Columns[j].ColumnName"  class="@Html.Raw(j == 0 || j==1 ? "code_Hidden" : string.Empty)" >&nbsp;&nbsp;@Html.Raw(itemColumn.ToString())</li>
+                       j++;
+                       
+                   }
+               }
+            }
+        </ul>
+    </div>
+            }
+        }
+        else
+        {
+    <div style="width: 100%; text-align: center; font-size: larger; padding: 10px 0 10px 0; font-weight: bold;">NO Data</div>
+        }
+    <div class="div_paging">
+        <input id="tPages" name="tPages" type="hidden" value="@Model.TotalPages"/>
+        <ul>
+            <li class="totalpage">Total Page @Model.TotalPages</li>
+            <li class="prewpage"><a href="#" onclick="BackPage()"><< Prew Page</a></li>
+            <li class="currentpage">Current Page @Model.PageIndex</li>
+            <li class="nextpage"><a href="#" onclick="NextPage()">Next Page >></a></li>
+            <li class="goto">
+                <a href="#" onclick="GotoPage()">Goto</a>
+                @Html.TextBox("GotoPage", "", new { onkeypress = "EnterPress(event)" })
+            </li>
+        </ul>
+    </div>
+    }
+    else
+    {
+    <div style="width: 100%; text-align: center; font-size: larger; padding: 10px 0 10px 0; font-weight: bold;">NO Data</div>
+    }
+}

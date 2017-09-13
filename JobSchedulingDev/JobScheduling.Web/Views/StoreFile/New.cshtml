@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Store File New";
+}
+
+@model JobScheduling.Model.FileModel.StoreFileM
+
+@section secFunctionBar{
+    <ul class="dark_color5">
+        <li>
+            <a href="/StoreFile/List">
+                <span class="back">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Back
+            </a>
+        </li>
+    </ul>
+}
+
+@using (Html.BeginForm())
+{ 
+    <ul class="content_infoview @ViewBag.Title">
+        <li>
+            @Html.ValidationMessage("errormessage")
+        </li>
+        <li>
+            <h4>StoreCode <span class="requireText">*</span></h4>
+            @Html.TextBoxFor(m => m.StoreCode, new { @Class="input_minlength"})
+            @Html.ValidationMessageFor(m => m.StoreCode)
+            <label class="field_description">6 characters</label>
+        </li>
+        <li>
+            <h4>DistrictCode <span class="requireText">*</span></h4>
+            @Html.DropDownListFor(m=>m.DistrictID, ViewData["districtlist"] as SelectList, "---------------------select please---------------------")
+            @Html.ValidationMessageFor(m => m.DistrictID)
+        </li>
+        <li>
+            <h4>StoreDescription</h4>
+            @Html.TextBoxFor(m => m.StoreLastDescription, new { @Class="input_largelength"})
+            @Html.ValidationMessageFor(m => m.StoreLastDescription)
+            <label class="field_description">50 characters</label>
+        </li>
+         <li>
+            <h4>Address</h4>
+            @Html.TextBoxFor(m => m.Address, new { @Class="input_largelength"})
+            @Html.ValidationMessageFor(m => m.Address)
+            <label class="field_description">255 characters</label>
+        </li>
+        <li>
+            <input type="submit" class="input_ok" value="Ok"/>
+            <input class="input_back" onclick="javascript: window.location = '/StoreFile/list';" type="button" />
+        </li>
+    </ul>
+}

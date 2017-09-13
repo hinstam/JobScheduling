@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = Model.Viewtitle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model JobScheduling.Entity.CommModel.CommonListModel
+
+
+@section Scripts{
+    <script src="~/Scripts/Shared/Pagination.js"></script>
+    <script src="~/Scripts/Shared/CRUD_COMMOM.js"></script>
+    <script type="text/javascript">
+        //initial Pagecss
+        function intialPageCss() {
+            Gridview_li_Css(0, 15);
+            Gridview_li_Css(1, 15);
+            Gridview_li_Css(2, 15);
+            Gridview_li_Css(3, 30);
+            Gridview_li_Css(4, 20)
+
+            $(".div_paging li").attr("style", "width:" + 100 / 8 + "%");
+        }
+    </script>
+}
+
+@section secFunctionBar{
+
+    <ul class="dark_color5">
+        @*@if (ViewData["New"] != null && Convert.ToBoolean(ViewData["New"]))
+        {
+        <li>
+            <a href="/Project/New">
+                <span class="new">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                New
+            </a>
+        </li>
+        }
+       @if (ViewData["Delete"] != null && Convert.ToBoolean(ViewData["Delete"]))
+        {
+        <li>
+            <a href="#" onclick="btn_Del('/Project/Delete','ProjectCode')">
+                <span class="del">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Del
+            </a>
+        </li>
+        }
+        @if (ViewData["Edit"] != null && Convert.ToBoolean(ViewData["Edit"]))
+        {
+        <li>
+            <a href="#" onclick="btn_Edit('/Project/Edit','Code')">
+                <span class="edit">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Edit
+            </a>
+        </li>
+        }*@
+
+        @if (ViewData["Detail"] != null && Convert.ToBoolean(ViewData["Detail"]))
+        {
+        <li style="width:160px">
+            <a href="#" onclick="btn_Detail('@Model.URL','Code')" style="width:147px">
+                <span class="detail" >
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                @Model.Title
+            </a>
+        </li>
+       }
+        <li class="dropdown_pagecount" tabindex="0" role="menuitem">
+            @Html.DropDownList("pSize", Model.Viewps as List<SelectListItem>, new { onchange = "ddlSize_onchange()", @class = "select_pagecount" })
+        </li>
+        <li class="searchTool" tabindex="0" role="menuitem">
+            <a href="#">
+                <span class="search">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Search
+            </a>
+        </li>
+
+    </ul>
+        }
+
+@section secSearchDetails{
+    @using (Html.BeginForm("list", "Project/"))
+    {  
+        <div class="div_searchcontent">
+            <div class="div_userid searchdata">
+                <span>ProjectCode</span>
+                @Html.TextBox("ProjectCode")
+            </div>
+      
+            
+            <div>
+                @Html.Hidden("PageSize", Model.page.PageSize)
+                @Html.Hidden("PageIndex", Model.page.PageIndex)
+                @Html.Hidden("TotalPages", Model.page.TotalPages)
+            </div>
+            <div class="div_btnbar">
+                <a href="javascript:void(0)" class="ok"  onclick="btnSearch_onclick()">
+                    <span>
+                        <img alt="" src="/Content/Images/ico_common.png" />
+                    </span>
+                </a>
+                <a href="#" class="reset">
+                    <span>
+                        <img alt="" src="/Content/Images/ico_common.png" />
+                    </span>
+                </a>
+                <a href="#" class="close">
+                    <span>
+                        <img alt="" src="/Content/Images/ico_common.png" />
+                    </span>
+                </a>
+            </div>
+        </div>
+    }
+    <div class="div_closesearchbar">
+    </div>
+
+}
+
+@{Html.RenderPartial("~/Views/Shared/_PartialPageList.cshtml", Model.page);}
+

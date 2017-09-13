@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Operation";
+
+}
+
+<script type="text/ecmascript">
+    $(document).ready(function () {
+
+        $('#btnSubmit').click(function () {
+            var operationName = $('#OperationSelect').find("option:selected").text();
+            var operationCode = $('#OperationSelect').val();
+
+            $('#OperationCode').val(operationCode);
+            $('#OperationName').val(operationName);
+            $("form").submit();
+
+        });
+
+        $('#btnLogout').click(function () {
+            window.location.href = "/Home/Logout";
+        });
+
+    });
+</script>
+
+<div class="div_selectoperation">
+        <div class="div_selectoperation_title">
+            <span>Please Select Operation :</span>
+        </div>
+        <div class="div_selectoperation_content">
+        @using (Html.BeginForm())
+        {
+            @Html.Hidden("OperationCode")
+            @Html.Hidden("OperationName")
+            @Html.DropDownList("OperationSelect")
+ 
+            <input type="button" name="ben" class="input_enter" id="btnSubmit" />
+            <input type="button" name="ben" class="input_logout" id="btnLogout" />
+        }
+        </div>
+    </div>

@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Summary Report – All Country";
+}
+@model JobScheduling.Model.MasterModel.PamReportM
+<!DOCTYPE html>
+ <script  type="text/javascript">
+     function Report() {
+
+
+         $.post("/SummaryReportByCountry/CheckData", $("form").serialize(), function (result) {
+             if (result) {
+                 window.open("/SummaryReportByCountry/PrintReport?" + $("form").serialize());
+             } else {
+                 alert(" Time format is invalid,Please Enter again !");
+             }
+         })
+         //    window.open("/SummaryReportByCountry/Report?" + $("form").serialize());
+     }
+
+     function Excel() {
+         $.post("/SummaryReportByCountry/CheckData", $("form").serialize(), function (result) {
+             if (result) {
+                 window.open("/SummaryReportByCountry/PrintReport?type=2&" + $("form").serialize());
+             } else {
+                 alert(" Time format is invalid,Please Enter again !");
+             }
+         })
+         //    window.open("/SummaryReportByCountry/Report?" + $("form").serialize());
+     }
+
+    </script>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+@using (Html.BeginForm("index", "SummaryReportByCountryController", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    
+     <ul class="content_infoview @ViewBag.Title">
+         <li>
+            <h4>Date (YYYYMMDD)</h4>
+            @Html.TextBoxFor(m => m.fm_date ) to 
+                @Html.TextBoxFor(m => m.to_date )
+        </li>
+        
+         <li>
+            <h4>Region </h4>
+            @*@Html.TextBoxFor(z => z.FromRegion) to 
+                @Html.TextBoxFor(z => z.ToRegion)*@
+           @* @Html.CheckBoxFor(Z => Z.HongKong) <label for="HongKong">Hong Kong</label>&nbsp;&nbsp;
+            @Html.CheckBoxFor(Z => Z.Macau) <label for="Macau">Macau</label>&nbsp;&nbsp;
+            @Html.CheckBoxFor(Z => Z.China) <label for="China">China</label>&nbsp;&nbsp;
+            @Html.CheckBoxFor(Z => Z.Singapore) <label for="Singapore">Singapore</label>*@
+
+             @Html.CheckBoxListFor(z=>z.Postedregions.RegionIDs,
+             z=>z.AvailableRegions,
+             r=>r.RegionID,
+             r=>r.RegionDescription,
+             z=>z.SelectedRegions)
+        </li>
+         <li>
+           <a title="Report" id="Report" class="div_print" target="_blank"  onclick="Report()" style="color :#A78E55">[ <span></span>Report ]</a>
+         </li>
+         <li>
+           <a title="Export to Excel" id="Excel" class="div_print" target="_blank"  onclick="Excel()" style="color :#A78E55">[ <span></span>Export to Excel ]</a>
+         </li>
+        </ul>
+
+}
+</body>
+</html>

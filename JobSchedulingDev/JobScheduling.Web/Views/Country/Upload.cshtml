@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Import Country File";
+}
+@model JobScheduling.Model.MasterModel.CountryM
+
+@section Scripts{
+<script>
+
+    $(document).ready(function () {
+
+    });
+
+    function DeleteData() {
+        
+        $.post("/Country/DeleteData", null, function (result) {
+        })
+        alert(" Delete Data Succeed ");
+    }
+
+    function showPath() {
+        var userName = document.getElementById("filepath").value;
+
+        var filename = $('#filepath').val();
+        var exprotfilename = $('#ExportFilename').val();
+        if (filename.substring(filename.length - 4, filename.length) == "xlsx" || filename.substring(filename.length - 3, filename.length) == "xls") {
+                $("#processingBackground").toggle();
+                $("#processing").toggle();
+                $("form").submit();
+
+            }
+        else {
+            alert("Please select a Excel file !");
+        }
+    }
+</script>
+}
+
+<br />
+<h3 style="margin-left: 30px;">   Import Country File</h3>
+<br />
+@using (Html.BeginForm("UploadCountry", "Country", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input style="margin-left: 30px;" type="file" value="Select File" id="filepath" name="filename"  />
+    <br />
+    <br />
+    <div>
+        <input style="margin-left: 30px;width :70px" type="button" value="Start" onclick ="showPath() "/>
+    </div>
+    <br />
+    <div>
+        <input style="margin-left: 30px;width :70px" type="button" value="Delete Data" onclick ="DeleteData();"/>
+    </div>
+}
+
+     @if (Model != null && Model.HasResult && Model.Errmsg == null)
+     {
+    <ul class="content_infoview View">  
+        <li>
+            <h4 style="width:350px">
+               Number of records in the Excel file:
+            </h4>
+            @Html.DisplayTextFor(m => m.NumOfData)
+        </li>     
+        <li>
+            <h4 style="width:350px">
+                Number of records write to Country Master:
+            </h4>
+            @Html.DisplayTextFor(m => m.NumOfSuccess) 
+        </li>
+        <li>
+            <h4 style="width:350px">
+               Number of records is not updated:
+            </h4>
+           @Html.DisplayTextFor(m => m.NumOfFail)
+        </li>
+        <li>
+            <h4 style="width:200px">
+              Error Data File :
+            </h4>
+           <a href="@Model.ExportFilename" style="text-decoration: underline;color :red" >Error Country File</a>
+        </li>
+     </ul>
+     }
+     @if (Model != null && Model.Errmsg != null)
+     {
+         <ul class="content_infoview View">
+            <li>
+                <h4 style="width:150px">
+                   Excel File Error: 
+                </h4>
+                @Html.DisplayTextFor(m => m.Errmsg)
+            </li>
+        </ul>
+     }

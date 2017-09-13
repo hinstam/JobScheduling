@@ -1,0 +1,69 @@
+﻿@model JobScheduling.Entity.SecurityModel.UserM
+@{
+    ViewBag.Title = "User New";
+}
+
+
+@section secFunctionBar{
+    <div id="divContentFunction">
+        <ul class="dark_color5">
+            <li>
+                <a href="/User/List">
+                    <span class="back">
+                        <img alt="" src="/Content/Images/ico_common.png" />
+                    </span>
+                    Back
+                </a>
+            </li>
+        </ul>
+    </div>
+}
+@using (Html.BeginForm())
+{
+    <ul class="content_infoview New">
+        <li>
+            <h4>
+               User ID <span class="requireText">*</span>
+            </h4>
+            @Html.TextBoxFor(m => m.UserID, new { @Class = "input_minlength" })
+            @Html.ValidationMessageFor(m => m.UserID)
+            <label class="field_description">1-25 characters</label>
+        </li>
+        <li>
+            <h4>
+               User Name <span class="requireText">*</span>
+            </h4>
+            @Html.TextBoxFor(m => m.UserName, new { @Class = "input_normallength" })
+            @Html.ValidationMessageFor(m => m.UserName)
+            <label class="field_description">1-50 characters</label>
+        </li>
+        <li>
+            <h4>
+               Password <span class="requireText">*</span>
+            </h4>
+            @Html.PasswordFor(m => m.Password, new {@Class="input_normallength"} )
+            @Html.ValidationMessageFor(m => m.Password)
+        </li>
+        <li>
+            <h4>
+              Confirm Password<span class="field-validation-error">*</span>
+            </h4>
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @Class = "input_normallength" })
+            @Html.ValidationMessageFor(m => m.ConfirmPassword)
+        </li>
+        <li>
+            <h4>
+               Active
+            </h4>
+            @Html.EditorFor(m => m.Active)
+            @Html.ValidationMessageFor(m => m.Active)
+        </li>
+        <li>
+            <label id="errorLabel">@Html.ValidationMessage("ErrorMessage")</label>
+        </li>
+        <li>
+            <input type="submit" class="input_ok" value="ok" />
+            <input type="button" class="input_back" onclick="window.location.href = '/User/List';" />
+        </li>
+    </ul>
+}

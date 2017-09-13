@@ -1,0 +1,175 @@
+﻿@{
+    ViewBag.Title = "Transaction File List";
+}
+@model JobScheduling.Entity.CommModel.PagingModel
+    <script>
+        function btn_return(url, code) {
+            var index = $(".content_gridview .Selected");
+            var param = index.find("li").eq(2).attr("columnName");
+            var _id = $.trim(index.find("li").eq(2).text());
+            var param2 = index.find("li").eq(3).attr("columnName");
+            var _id2 = $.trim(index.find("li").eq(3).text());
+            var param3 = index.find("li").eq(1).attr("columnName");
+            var _id3 = $.trim(index.find("li").eq(1).text());
+            var param4 = index.find("li").eq(5).attr("columnName");
+            var _id4 = $.trim(index.find("li").eq(5).text());
+            if (index.length > 0) {
+                window.location = url + "?" + $.trim(param) + "=" + _id + "&" + $.trim(param2) + "=" + _id2 + "&" + $.trim(param3) + "=" + _id3 + "&" + $.trim(param4) + "=" + _id4;
+            } else {
+                alert("Please select list!");
+            }
+        }
+        function btn_Del(url, param_co, param_se, param_do, func) {
+            var index = $(".content_gridview .Selected");
+            var _id = index.find("li").eq(1);
+            var message = "";
+
+            if (param_co) {
+                var _cn = index.find("li[columnName='" + param_co + "']");
+                var _cn2 = index.find("li[columnName='" + param_se + "']");
+                var _cn3 = index.find("li[columnName='" + param_do + "']");
+                message = "Are you sure to delete it 【" + _cn.attr("columnName") + "=" + _cn.text() + "," + _cn2.attr("columnName") + "=" + _cn2.text() + "," + _cn3.attr("columnName") + "=" + _cn3.text() + "】?";
+            } else {
+                message = "Are you sure to delete it ?";
+            }
+
+            if (index.length > 0) {
+                if (confirm(message)) {
+                    $.post(url, { "StoreCode": _cn.text(), "SerialNo": _cn2.text(), "DocumentNo": _cn3.text() }, function (data) {
+                        
+                        if (data.IsSuccess) {
+                            alert("Success!");
+
+                            (func) && (func(url, data));
+
+                            index.remove();
+
+                        } else {
+                            alert(data.Exception);
+                        }
+                    });
+                }
+            } else {
+                alert("Please select list!");
+            }
+        }
+    </script>
+@section Scripts{
+    <script src="~/Scripts/Shared/Pagination.js"></script>
+    <script src="~/Scripts/Shared/CRUD_COMMOM.js"></script>
+    <script type="text/javascript">
+        //initial Pagecss
+        function intialPageCss() {
+            Gridview_li_Css(0, 0);
+            Gridview_li_Css(1, 1);
+            Gridview_li_Css(2, 10);
+            Gridview_li_Css(3, 10);
+            Gridview_li_Css(4, 13);
+            Gridview_li_Css(5, 12);
+            Gridview_li_Css(6, 15);
+            Gridview_li_Css(7, 10);
+            Gridview_li_Css(8, 10);
+            Gridview_li_Css(9, 15);
+
+        }
+    </script>
+
+}
+
+@section secFunctionBar{
+    <ul class="dark_color5">
+
+        <li>
+            <a href="New">
+                <span class="new">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                New
+            </a>
+        </li>
+         
+        
+        <li>
+            <a href="#" onclick="btn_Del('/TransactionFile/Delete','StoreCode','SerialNo','DocumentNo')">
+                <span class="del">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Del
+            </a>
+        </li>
+         
+
+        <li>
+            <a href="#" onclick="btn_return('/TransactionFile/edit','code')">
+                <span class="edit">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Edit
+            </a>
+        </li>    
+       
+        <li>
+            <a href="#" onclick="btn_return('/TransactionFile/detail','code')">
+                <span class="detail">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Detail
+            </a>
+        </li>
+         
+        <li class="dropdown_pagecount" tabindex="0" role="menuitem">
+            @Html.DropDownList("pSize", ViewBag.SizeList as List<SelectListItem>, new { onchange = "ddlSize_onchange()", @class = "select_pagecount" })
+        </li>
+        <li class="searchTool" tabindex="0" role="menuitem">
+            <a href="#">
+                <span class="search">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Search
+            </a>
+        </li>
+
+    </ul>
+        }
+
+@section secSearchDetails{
+        @using (Html.BeginForm())
+        {  
+        <div class="div_searchcontent">
+            <div class="div_userid searchdata">
+                <span>Seria lNo </span>
+                @Html.TextBox("SerialNo")
+            </div>
+            <div class="div_userid searchdata">
+                <span>Document No </span>
+                @Html.TextBox("DocumentNo")
+            </div>
+            <div>
+                @Html.HiddenFor(z => z.PageSize)
+                @Html.HiddenFor(z => z.PageIndex)
+                @Html.HiddenFor(z => z.TotalPages)
+            </div>
+            <div class="div_btnbar">
+                <a href="#" class="ok"  onclick="btnSearch_onclick()">
+                    <span>
+                        <img alt="" src="/Content/Images/ico_common.png" />
+                    </span>
+                </a>
+                <a href="#" class="reset">
+                    <span>
+                        <img alt="" src="/Content/Images/ico_common.png" />
+                    </span>
+                </a>
+                <a href="#" class="close">
+                    <span>
+                        <img alt="" src="/Content/Images/ico_common.png" />
+                    </span>
+                </a>
+            </div>
+        </div>
+        }
+    <div class="div_closesearchbar">
+    </div>
+}
+
+    @{Html.RenderPartial("~/Views/Shared/_PartialPageList.cshtml", Model);}

@@ -1,0 +1,51 @@
+﻿@model JobScheduling.Entity.SecurityModel.GroupM
+@{
+    ViewBag.Title = "Group New";
+}
+
+
+@section secFunctionBar{
+    <div id="divContentFunction">
+        <ul class="dark_color5">
+            <li>
+                <a href="/Group/List">
+                    <span class="back">
+                        <img alt="" src="/Content/Images/ico_common.png" />
+                    </span>
+                    Back
+                </a>
+            </li>
+        </ul>
+    </div>
+}
+@using (Html.BeginForm())
+{
+    <ul class="content_infoview New">
+        <li>
+            <h4>
+                Group Name <span class="requireText">*</span>
+            </h4>
+            @Html.EditorFor(m => m.GroupName)
+            @Html.ValidationMessageFor(m => m.GroupName)
+            <label class="field_description">1-50 characters</label>
+        </li>
+        <li>
+            <h4>
+               Description
+            </h4>
+            @Html.TextAreaFor(m => m.Description)
+            @Html.ValidationMessageFor(m => m.Description)
+        </li>
+        <li>
+            <label id="errorLabel">@Html.ValidationMessage("ErrorMessage")</label>
+        </li>
+        <li>
+            <input type="submit" class="input_ok" value="ok" />
+            <input type="button" class="input_back" onclick="window.location.href = '/Group/List';" />
+        </li>
+    </ul>
+}
+
+
+
+

@@ -1,0 +1,200 @@
+﻿@{
+    ViewBag.Title = "List";
+}
+
+
+@section secFunctionBar{
+
+    <ul class="dark_color5">
+        <li>
+            <a href="#">
+                <span class="back">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Back
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="new">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                New
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="del">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Del
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="edit">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Edit
+            </a></li>
+        <li>
+            <a href="#">
+                <span class="detail">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Detail
+            </a>
+
+        </li>
+        <li>
+            <a href="#">
+                <span class="selectuser">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+               User
+            </a>
+
+        </li>
+        <li class="dropdown_pagecount" tabindex="0" role="menuitem">
+            <select id="droplist_pagecount" class="select_pagecount">
+                <option>All</option>
+                @{
+                    for (int i = 0; i < 5; i++)
+                    {
+                    <option>@i</option>    
+                    }
+                }
+            </select>
+
+            <div class="div_ul_pagelist">
+                <ul>
+
+                </ul>
+            </div>
+        </li>
+        <li class="searchTool" tabindex="0" role="menuitem">
+            <a href="#">
+                <span class="search">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Search
+            </a>
+        </li>
+
+    </ul>
+}
+
+
+@section secSearchDetails{
+
+    <div class="div_searchcontent">
+        <div>
+            <div class="div_userid searchdata">
+                <span>User ID</span>
+                <input type="text" />
+            </div>
+            <div class="div_username searchdata">
+                <span>User Name</span>
+                <input type="text" />
+            </div>
+            <div class="div_including searchdata">
+                <span>Including</span>
+                <input type="text" />
+            </div>
+            <div class="div_datestart searchdata">
+                <span>Date start</span>
+                <input type="text" name="Title" title="Title" value="2013/10/12" class="text_BeginDate" />
+                <span class="dateicon"></span>
+            </div>
+            <div class="div_dateend searchdata">
+                <span>- Date end</span>
+                <input type="text" name="Title" title="Title" value="@DateTime.Now.ToString("yyyy-m-d")" class="text_EndDate"/>
+                <span class="dateicon"></span>
+            </div>
+
+        </div>
+
+        <div class="div_btnbar">
+            <a href="#" class="ok">
+                <span>
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+            </a>
+            <a href="#" class="reset">
+                <span>
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+            </a>
+            <a href="#" class="cancel">
+                <span>
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+            </a>
+        </div>
+    </div>
+
+    <div class="div_closesearchbar">
+    </div>
+}
+
+
+@*@section secContent{*@
+
+<div class="content_gridview_header">
+    <ul>
+        <li>Header1</li>
+        <li>Header2</li>
+        <li>Header3</li>
+        <li>Header4</li>
+        <li>Header5</li>
+        <li>Header6</li>
+    </ul>
+</div>
+@{
+    for (int i = 0; i < 21; i++)
+    {
+        if (i % 2 == 0)
+        {
+    <div class="content_gridview_row odd">
+        <ul>
+            <li>@i</li>
+            <li>@i</li>
+            <li>@i</li>
+            <li>@i</li>
+            <li>@i</li>
+            <li>@i</li>
+        </ul>
+    </div>
+        }
+        else
+        {
+    <div class="content_gridview_row even">
+        <ul>
+            <li>@i</li>
+            <li>@i</li>
+            <li>@i</li>
+            <li>@i</li>
+            <li>@i</li>
+            <li>@i</li>
+        </ul>
+    </div>
+        }
+    }
+}
+
+
+<div class="div_paging">
+    <ul>
+        <li class="totalpage"><a href="#">Total Page 10</a></li>
+        <li class="prewpage"><a href="#"><< Prew Page</a></li>
+        <li class="currentpage"><a href="#">Current Page 3</a></li>
+        <li class="nextpage"><a href="#">Next Page >></a></li>
+        <li class="goto">
+            <a href="#">Goto</a>
+            <input type="text" /></li>
+    </ul>
+</div>
+
+@*}*@
+
+

@@ -1,0 +1,243 @@
+﻿@model List<JobScheduling.Entity.CommModel.ArtistModel>
+@{
+    ViewBag.Title = "GroupRight";
+}
+
+@section secFunctionBar{
+    <script type="text/javascript" src="~/Scripts/Artiste/ArtisteSelection.js"></script>
+    <ul class="dark_color5">
+        <li>
+            <a href="#">
+                <span class="back">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Back
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="new">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                New
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="del">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Del
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="edit">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Edit
+            </a></li>
+        <li>
+            <a href="#">
+                <span class="detail">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Detail
+            </a>
+
+        </li>
+    </ul>
+}
+
+
+@* list style demo *@
+@*<div class="div_usergroup_content">
+    <div class="div_grouplist_content">
+        <div class="div_grouplist_search header left">
+            <input type="text" />
+            <span class="searchicon" onclick="javascript:alert('search');"></span>
+        </div>
+        <div class="div_grouplist left">
+            <ul class="ul_grouplist">
+                @{
+                    for (int i = 0; i < 50; i++)
+                    {
+                        if (i % 2 == 0)
+                        {
+                    <li class="odd">
+                        <a href="#">Group Right  @i
+                        </a>
+                    </li>
+                        }
+                        else
+                        {
+                    <li class="even">
+                        <a href="#">Group Right @i
+                        </a>
+                    </li>
+                        }
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="div_grouprightset right">
+        <span class="title">Group 1 right set</span>
+        <div class="div_grouprightsetcontent">
+            <div class="div_group1rightset header">
+                <ul>
+                    <li style="width: 15%; font-weight: bold;">Model h</li>
+                    <li style="width: 10%; font-weight: bold;">Show h</li>
+                    <li style="width: 75%; font-weight: bold; *width: 69%;">Function h</li>
+                </ul>
+            </div>
+            <div class="div_grouprightsetedlist">
+
+                @{
+                    for (int i = 0; i < 50; i++)
+                    {
+                        if (i % 2 == 0)
+                        {
+                    <div class="row odd">
+                        <ul>
+                            <li style="width: 15%;">Model h</li>
+                            <li style="width: 10%;">Show h</li>
+                            <li style="width: 75%; *width: 74%;">Function h Function h </li>
+                        </ul>
+                    </div>
+                        }
+                        else
+                        {
+                    <div class="row even">
+                        <ul>
+                            <li style="width: 15%;">Model h</li>
+                            <li style="width: 10%;">Show h</li>
+                            <li style="width: 75%; *width: 74%;">Function h Function h </li>
+                        </ul>
+                    </div>
+                        }
+                    }   
+                }
+            </div>
+        </div>
+    </div>
+</div>*@
+
+@* button style demo *@
+@*<div class="div_btnbar">
+    <a href="#" class="ok">
+        <span>
+            <img alt="" src="/Content/Images/ico_common.png" />
+        </span>
+    </a>
+    <a href="#" class="reset">
+        <span>
+            <img alt="" src="/Content/Images/ico_common.png" />
+        </span>
+    </a>
+    <a href="#" class="cancel">
+        <span>
+            <img alt="" src="/Content/Images/ico_common.png" />
+        </span>
+    </a>
+    <a href="#" class="close">
+        <span>
+            <img alt="" src="/Content/Images/ico_common.png" />
+        </span>
+    </a>
+
+
+    <input type="button" name="ben" class="input_ok" value="ok" onclick="javascript: alert('ok');" />
+    <input type="button" name="ben" class="input_reset" onclick="javascript: alert('reset');" />
+    <input type="button" name="ben" class="input_cancel" onclick="javascript: alert('cancel');" />
+    <input type="button" name="ben" class="input_back" onclick="javascript: alert('back');" />
+    <input type="button" name="ben" class="input_close" onclick="javascript: alert('close');" />
+    <br />
+    <br />
+    <input type="text" name="minlength" class="input_minlength" />
+    <br />
+    <br />
+    <input type="text" name="normallength" class="input_normallength" />
+    <br />
+    <br />
+    <input type="text" name="largelength" class="input_largelength" />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <div class="div_selectoperation">
+        <div class="div_selectoperation_title">
+            <span>Please Select Operation :</span>
+        </div>
+        <div class="div_selectoperation_content">
+            <input class="input_searchcontent" type="text" value="2013-49-25" title="Title" name="Title">
+            <a class="a_dropiconarea">
+                <span class="span_dropicon">
+                    <img src="/Content/Images/ico_common.png" alt="">
+                </span>
+            </a>
+            <input type="button" name="ben" class="input_enter" onclick="javascript: alert('enter');" />
+            <input type="button" name="ben" class="input_logout" onclick="javascript: alert('logout');" />
+
+           
+        </div>
+    </div>
+</div>*@
+
+
+
+<textarea id="text1" name="input_artise_info" readonly="true" maxlength="500"></textarea>
+<a class="a_choose_artise" href="#div_artise_choose_pancel" onclick="javascript:showMaskLayout('text1');">多选</a>
+
+
+
+@section secArtiseSelectPancel{
+    <div id="div_artise_choose_pancel" class="columns" style="display: none;">
+        <a href="#" class="a_close_artise_choose_pancel columns" onclick="javascript:hideMaskLayout('text1');" title="btn_Close"></a>
+        <div class="content columns">
+            <div class="div_artise_search columns">
+                <span style="margin-right: 5px; font-size: 18px;">Selected:</span>
+                <input type="text" value="" name="SelectArtist" class="SearchArtist">
+                <span onclick="search_Selected();" class="searchicon"></span>
+            </div>
+            <div class="div_artiselist columns">
+
+                <ul class="SelectedArtistList">
+                </ul>
+
+            </div>
+
+        </div>
+        <div class="div_artiselist_mid columns">
+            <div class="div_choosebar">
+                <a onclick="UnSelectedArtistToSelected();" class="up"></a>
+                <a onclick="SelectedArtisToNotSelected();" class="down"></a>
+            </div>
+        </div>
+        <div class="content columns">
+            <span class="title ">Admin</span>
+            <div class="description"></div>
+            <div class="div_artise_search columns">
+                <span style="margin-right: 5px; font-size: 18px;">Not be Selected:</span>
+                <input type="text" value="" name="SelectArtist" class="SearchNotbeSelectedArtist">
+                <span onclick="search_Not_be_Selected();" class="searchicon"></span>
+            </div>
+            <div class="div_artiselist columns">
+
+                <ul class="NotbeSelectedArtistList">
+                </ul>
+
+            </div>
+
+        </div>
+        
+        <div class="div_btnbar">
+            <input type="button" name="ben" class="input_ok" value="ok" onclick="javascript: submitArtise2('text1')" />
+            <input type="button" name="ben" class="input_close" onclick="javascript: hideMaskLayout('text1')" />
+        </div>
+    </div>
+
+    <script src="~/Scripts/Shared/CRUD_COMMOM.js"></script>
+}
+

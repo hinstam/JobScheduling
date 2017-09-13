@@ -1,0 +1,89 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - EG.StyleWebSite</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/EGScript")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/jqueryui/css")
+    @RenderSection("Scripts", false)
+   @* <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+</head>
+<body>
+    @*@RenderPage("~/Views/Shared/_LayoutHeader.cshtml", null)*@
+    <div id="divMid">
+        @{ var session = new JobScheduling.Business.Business(); }
+        @RenderPage("~/Views/Shared/_LayoutLeftSide.cshtml", null)
+        <div id="divMidRightContainer">
+            <div id="divContentHeader">
+                <div id="divContentTitle">
+                    <span>
+                        <a href="#">
+                            @ViewBag.Title
+                        </a>
+                    </span>
+                </div>
+                <div id="divUserInfo">
+                    <div class="div_SubUserInfo">
+                        <div class="div_subUserInfoPanel">
+                            <span class="username">
+                                <a class="a_username" href="#">@Html.Raw(session.UserID + "(" + session.UserName + ")")</a>
+                                <a class="a_dropiconarea">
+                                    <span class="span_dropicon">
+                                        <img alt="" src="/Content/Images/ico_common.png" />
+                                    </span>
+                                </a>
+                            </span>
+                            <span>
+                                <a class="belongsby" href="#">
+                                    @Html.Raw(session.OperationName)
+                                </a>
+                                <a class="loginout" href="/Home/Logout">Login out</a>
+                            </span>
+                        </div>
+                    </div>
+                    <div id="operateMenu" class="operateMenu">
+                        <ul>
+                            <li><a href="@Url.Content("/Common/ChangePassword/")">ChangePassword</a></li>
+                        </ul>
+                    </div>
+                    <div class="div_userimg">
+                        <a class="userimg" href="#">
+                            <span class="span_userimg">
+                                <img alt="" src="/Content/Images/ico_common.png" /></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="div_allfunction">
+                <div id="divContentFunction">
+                    @RenderSection("secFunctionBar", false)
+                </div>
+                <div id="divSearchDetails">
+                    @RenderSection("secSearchDetails", false)
+                </div>
+                @*add by mark 2013-12-11*@
+                @RenderSection("projectInfo", false)
+                <div class="content_gridview @ViewBag.Title">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="processing" class="loading">
+        <img src="~/Content/Images/loading.gif" />
+    </div>
+    <div id="processingBackground" class="loadingBackground"></div>
+    <div id="div_mask_layout" class="bg">
+       
+    </div>
+     @RenderSection("secArtiseSelectPancel", false)
+</body>
+</html>
