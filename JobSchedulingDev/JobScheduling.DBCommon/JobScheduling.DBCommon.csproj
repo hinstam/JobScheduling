@@ -86,7 +86,7 @@
     <Content Include="LIB\Oracle.DataAccess.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EG.TRS.Common\JobScheduling.Common.csproj">
+    <ProjectReference Include="..\JobScheduling.Common\JobScheduling.Common.csproj">
       <Project>{b1a65107-5b86-4c74-ae5e-99a6a02cff0e}</Project>
       <Name>JobScheduling.Common</Name>
     </ProjectReference>
