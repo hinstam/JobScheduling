@@ -1,0 +1,49 @@
+﻿@model JobScheduling.Model.MasterModel.CountryM
+@{
+    ViewBag.Title = "Country Edit";
+}
+
+@section secFunctionBar{
+    <div id="divContentFunction">
+        <ul class="dark_color5">
+            <li>
+                <a href="/Country/List">
+                    <span class="back">
+                        <img alt="" src="/Content/Images/ico_common.png" />
+                    </span>
+                    Back
+                </a>
+            </li>
+        </ul>
+    </div>
+}
+@using (Html.BeginForm())
+{
+    <ul class="content_infoview Edit">
+        <li>
+            <h4>
+              Code
+            </h4>
+            @Html.DisplayTextFor(m => m.Code)
+            @Html.HiddenFor(m => m.Code)
+        </li>
+        <li>
+            <h4>
+                Description
+            </h4>
+            @Html.TextBoxFor(m => m.Description, new { @Class = "input_largelength" })
+            @Html.ValidationMessageFor(m => m.Description)
+            <label class="field_description">1-32 characters</label>
+        </li>
+        
+        <li>
+            <label id="errorLabel">@Html.ValidationMessage("ErrorMessage")</label>
+        </li>
+        <li>
+            <input type="submit" class="input_ok" value="ok" />
+            <input type="button" class="input_back" onclick="window.location.href = '/Country/List';" />
+        </li>
+    </ul>
+  
+
+}

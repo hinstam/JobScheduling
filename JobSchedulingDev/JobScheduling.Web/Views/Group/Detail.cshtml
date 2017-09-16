@@ -1,0 +1,51 @@
+﻿@model JobScheduling.Entity.SecurityModel.GroupM
+@{
+    ViewBag.Title = "Group Detail";
+}
+
+@section secFunctionBar{
+    <div id="divContentFunction">
+        <ul class="dark_color5">
+            <li>
+                <a href="/Group/List">
+                    <span class="back">
+                        <img alt="" src="/Content/Images/ico_common.png" />
+                    </span>
+                    Back
+                </a>
+            </li>
+        </ul>
+    </div>
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    
+    <ul class="content_infoview @ViewBag.Title">
+        <li>
+            <h4>
+                Group ID
+            </h4>
+            @Html.DisplayTextFor(m => m.GroupID)
+        </li>
+        <li>
+            <h4>
+               Group Name
+            </h4>
+            @Html.DisplayFor(m => m.GroupName)
+
+        </li>
+        <li>
+            <h4>
+                Description
+            </h4>
+            @Html.TextAreaFor(m => m.Description, new { @Class = "textarea_detail" })
+        </li>
+        <li>
+            <input type="button" class="input_back" onclick="window.location.href = '/Group/List';" />
+        </li>
+    </ul>
+}
+
+
+

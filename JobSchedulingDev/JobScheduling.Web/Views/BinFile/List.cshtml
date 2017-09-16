@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "Bin File List";
+}
+@model JobScheduling.Entity.CommModel.PagingModel
+
+@section Scripts{
+    <script src="~/Scripts/Shared/Pagination.js"></script>
+    <script src="~/Scripts/Shared/CRUD_COMMOM.js"></script>
+    <script type="text/javascript">
+        //initial Pagecss
+        function intialPageCss() {
+            Gridview_li_Css(0, 0);
+            Gridview_li_Css(1, 1);
+            Gridview_li_Css(2, 10);
+            Gridview_li_Css(3, 15);
+            Gridview_li_Css(4, 20);
+            Gridview_li_Css(5, 15);
+            Gridview_li_Css(6, 15);
+            Gridview_li_Css(7, 20);
+        }
+    </script>
+
+}
+
+@section secFunctionBar{
+    <ul class="dark_color5">
+        @if(ViewData["New"]!=null && Convert.ToBoolean(ViewData["New"]))
+        {
+        <li>
+            <a href="New">
+                <span class="new">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                New
+            </a>
+        </li>
+         }
+        @if (ViewData["Delete"] != null && Convert.ToBoolean(ViewData["Delete"]))
+        {
+        <li>
+            <a href="#" onclick="btn_Del('/BinFile/delete','BIN')">
+                <span class="del">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Del
+            </a>
+        </li>
+         }
+        @if (ViewData["Edit"] != null && Convert.ToBoolean(ViewData["Edit"]))
+        {
+        <li>
+            <a href="#" onclick="btn_Edit('/BinFile/edit','code')">
+                <span class="edit">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Edit
+            </a>
+        </li>
+        }
+        @if (ViewData["Detail"] != null && Convert.ToBoolean(ViewData["Detail"]))
+        {
+        <li>
+            <a href="#" onclick="btn_Detail('/BinFile/detail','code')">
+                <span class="detail">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Detail
+            </a>
+        </li>
+        } 
+        <li class="dropdown_pagecount" tabindex="0" role="menuitem">
+            @Html.DropDownList("pSize", ViewBag.SizeList as List<SelectListItem>, new { onchange = "ddlSize_onchange()", @class = "select_pagecount" })
+        </li>
+        <li class="searchTool" tabindex="0" role="menuitem">
+            <a href="#">
+                <span class="search">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Search
+            </a>
+        </li>
+
+    </ul>
+        }
+
+@section secSearchDetails{
+        @using (Html.BeginForm())
+        {  
+        <div class="div_searchcontent">
+            <div class="div_userid searchdata">
+                <span>BIN </span>
+                @Html.TextBox("Code")
+                @Html.TextBox("hide",string.Empty,new { @Style="display:none"})
+            </div>
+            <div>
+                @Html.HiddenFor(z => z.PageSize)
+                @Html.HiddenFor(z => z.PageIndex)
+                @Html.HiddenFor(z => z.TotalPages)
+            </div>
+            <div class="div_btnbar">
+                <a href="#" class="ok"  onclick="btnSearch_onclick()">
+                    <span>
+                        <img alt="" src="/Content/Images/ico_common.png" />
+                    </span>
+                </a>
+                <a href="#" class="reset">
+                    <span>
+                        <img alt="" src="/Content/Images/ico_common.png" />
+                    </span>
+                </a>
+                <a href="#" class="close">
+                    <span>
+                        <img alt="" src="/Content/Images/ico_common.png" />
+                    </span>
+                </a>
+            </div>
+        </div>
+        }
+    <div class="div_closesearchbar">
+    </div>
+}
+
+    @{Html.RenderPartial("~/Views/Shared/_PartialPageList.cshtml", Model);}

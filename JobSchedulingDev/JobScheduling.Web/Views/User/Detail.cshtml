@@ -1,0 +1,46 @@
+﻿@model JobScheduling.Entity.SecurityModel.UserM
+@{
+    ViewBag.Title = "User Detail";
+}
+
+@section secFunctionBar{
+    <div id="divContentFunction">
+        <ul class="dark_color5">
+            <li>
+                <a href="/User/List">
+                    <span class="back">
+                        <img alt="" src="/Content/Images/ico_common.png" />
+                    </span>
+                    Back
+                </a>
+            </li>
+        </ul>
+    </div>
+}
+@using (Html.BeginForm())
+{
+    <ul class="content_infoview View">
+        <li>
+            <h4>
+               User ID
+            </h4>
+            @Html.DisplayTextFor(m => m.UserID)
+        </li>
+        <li>
+            <h4>
+               User Name
+            </h4>
+            @Html.DisplayFor(m => m.UserName)
+        </li>
+        <li>
+            <h4>
+               Active
+            </h4>
+            @Html.DisplayFor(m => m.Active)
+        </li>
+        <li>
+            <input type="button" class="input_back" onclick="window.location.href = '/User/List';" />
+        </li>
+    </ul>
+
+}

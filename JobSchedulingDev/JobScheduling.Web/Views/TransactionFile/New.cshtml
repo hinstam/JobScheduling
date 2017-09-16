@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "Transaction File New";
+}
+
+@model JobScheduling.Model.FileModel.TransactionFileM
+
+@section secFunctionBar{
+    <ul class="dark_color5">
+        <li>
+            <a href="/TransactionFile/List">
+                <span class="back">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Back
+            </a>
+        </li>
+    </ul>
+}
+
+@using (Html.BeginForm())
+{ 
+    <ul class="content_infoview @ViewBag.Title">
+         <li>
+            @Html.ValidationMessage("errormessage")
+        </li>
+        <li>
+            <h4>Serial No <span class="requireText">*</span></h4>
+            @Html.TextBoxFor(m => m.SerialNo, new { @Class="input_largelength"})
+            @Html.ValidationMessageFor(m => m.SerialNo)
+            <label class="field_description">7 characters</label>
+        </li>
+        <li>
+            <h4>Store Code <span class="requireText">*</span></h4>
+            @Html.TextBoxFor(m => m.StoreCode, new { @Class="input_largelength"})
+            @Html.ValidationMessageFor(m => m.StoreCode)
+            <label class="field_description">6 characters</label>
+        </li>
+        <li>
+            <h4>Document No <span class="requireText">*</span></h4>
+            @Html.TextBoxFor(m => m.DocumentNo, new { @Class="input_largelength"})
+            @Html.ValidationMessageFor(m => m.DocumentNo)
+            <label class="field_description">10 characters</label>
+        </li>
+        <li>
+            <h4>Transaction Date </h4>
+            @Html.TextBoxFor(m => m.TransactionDate, new { @Class="input_largelength"})
+            @Html.ValidationMessageFor(m => m.TransactionDate)
+            <label class="field_description">(YYYYMMDD)</label>
+        </li>
+        <li>
+            <h4>CreditCard No </h4>
+            @Html.TextBoxFor(m => m.CreditCardNo, new { @Class="input_largelength"})
+            @Html.ValidationMessageFor(m => m.CreditCardNo)
+            <label class="field_description">20 characters</label>
+        </li>
+        <li>
+            <h4>Base Amount </h4>
+            @Html.TextBoxFor(m => m.BaseAmount, new { @Class="input_largelength"})
+            @Html.ValidationMessageFor(m => m.BaseAmount)
+            
+        </li>
+        <li>
+            <h4>BIN </h4>
+            @Html.TextBoxFor(m => m.BIN, new { @Class="input_largelength"})
+            @Html.ValidationMessageFor(m => m.BIN)
+            <label class="field_description">6 characters</label>
+        </li>
+        <li>
+            <h4>Card Brand </h4>
+            @Html.TextBoxFor(m => m.CardBrand, new { @Class="input_largelength"})
+            @Html.ValidationMessageFor(m => m.CardBrand)
+            <label class="field_description">20 characters</label>
+        </li>
+        <li>
+            <h4>Issuing Bank </h4>
+            @Html.TextBoxFor(m => m.IssuingBank, new { @Class="input_largelength"})
+            @Html.ValidationMessageFor(m => m.IssuingBank)
+            <label class="field_description">30 characters</label>
+        </li>
+        <li>
+            <h4>Type of Card </h4>
+            @Html.TextBoxFor(m => m.TypeofCard, new { @Class="input_largelength"})
+            @Html.ValidationMessageFor(m => m.TypeofCard)
+            <label class="field_description">20 characters</label>
+        </li>
+        <li>
+            <h4>Category of Card </h4>
+            @Html.TextBoxFor(m => m.CategoryofCard, new { @Class="input_largelength"})
+            @Html.ValidationMessageFor(m => m.CategoryofCard)
+            <label class="field_description">20 characters</label>
+        </li>
+        <li>
+            <h4>Issuing Country Code </h4>
+            @Html.TextBoxFor(m => m.IssuingCountryCode, new { @Class="input_largelength"})
+            @Html.ValidationMessageFor(m => m.IssuingCountryCode)
+            <label class="field_description">2 characters</label>
+        </li>
+        
+        <li>
+            <input type="submit" class="input_ok" value="Ok"/>
+            <input class="input_back" onclick="javascript: window.location = '/TransactionFile/list';" type="button" />
+        </li>
+    </ul>
+}

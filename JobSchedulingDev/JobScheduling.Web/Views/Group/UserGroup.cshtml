@@ -1,0 +1,107 @@
+﻿@model List<JobScheduling.Entity.SecurityModel.GroupM>
+@{
+    ViewBag.Title = "User Group";
+}
+
+@section Scripts{
+
+    <script src="~/Scripts/Shared/CRUD_COMMOM.js"></script>
+
+    <script src="~/Scripts/Group/UserGroup.js"></script>
+}
+
+
+
+@section secFunctionBar{
+
+    <ul class="dark_color5">
+        <li>
+            <a href="/Group/List">
+                <span class="back">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Back
+            </a>
+        </li>
+    </ul>
+}
+
+<div class="div_selectuser_content">
+    <div class="div_grouplist_content left">
+        <div class="div_grouplist_search header left">
+            @{ var cg = Model.FirstOrDefault(z => z.GroupID == ViewBag.GID);  }
+            @Html.TextBox("GroupName")
+            @Html.Hidden("GroupID", Model.Count == 0 ? string.Empty : cg == null ? Model.First().GroupID : cg.GroupID)
+            <span class="searchicon" onclick="Load_Group()"></span>
+        </div>
+        <div class="div_grouplist left">
+            <ul class="ul_grouplist" id="Grouplist">
+                @{
+                    int j = 0;
+                    if (Model != null && Model.Count > 0)
+                    {
+                        foreach (var item in Model)
+                        {
+                            if (j++ % 2 == 0)
+                            { 
+                    <li class="odd" onclick="LiGroup_onclick('@item.GroupName','@item.GroupID')">
+                        <a href="#">@item.GroupName
+                        </a>
+                    </li> 
+                            }
+                            else
+                            {
+                    <li class="even" onclick="LiGroup_onclick('@item.GroupName','@item.GroupID')">
+                        <a href="#">@item.GroupName
+                        </a>
+                    </li>
+                            }
+                        }
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div class="div_rightset right">
+        <div class="div_rightset_left">
+            <div class="daiding">
+                <div class="title">@Html.Raw(Model.Count == 0 ? string.Empty : cg == null ? Model.First().GroupName : cg.GroupName)</div>
+                <div class="description"></div>
+                <div class="div_rightset_search">
+                    <span style="margin-right: 5px; font-size: 14px; margin-left: 15px;">Selected</span>
+                    @Html.TextBox("SelectedUser")
+                    <span class="searchicon" onclick="Load_SelectedUser()"></span>
+                </div>
+                <div class="div_rightsetlist">
+                    <ul class="ul_grouplist" id="SelectedUserList">
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="div_rightset_mid">
+            <div class="div_choosebar">
+                <a class="up" onclick="AddUser()"></a>
+                <a class="down" onclick="DelUser()"></a>
+            </div>
+        </div>
+        <div class="div_rightset_right">
+            <div class="div_rightset_search">
+                <span style="margin-right: 5px; font-size: 14px; margin-left: 15px;">All User </span>
+                @Html.TextBox("UserName")
+                <span class="searchicon" onclick="Load_User()"></span>
+            </div>
+            <div class="div_rightsetlist">
+                <ul class="ul_grouplist" id="UserList">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_btnbar">
+    <input type="button" class="input_back" onclick="window.location.href = '/Group/List';" />
+</div>
+
+

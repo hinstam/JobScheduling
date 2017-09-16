@@ -1,0 +1,57 @@
+﻿@model IEnumerable<JobScheduling.Entity.SecurityModel.MenuModel>
+@{
+    Layout = "";
+}
+
+@foreach (var item in Model)
+{
+    if (item.IsFatherNode)
+    {
+        <li>
+            <a href="javascript:showOrHideMenu('@item.ModuleCode')"  @Html.Raw(item.IsSelect ? "class='active'":"")>@item.ModuleName</a>
+            <span></span>
+            <ul class="submenu" id="@(item.ModuleCode+"_ul")" @Html.Raw(item.IsSelect ? "":"style='display:none'")>
+            @foreach(var subItem in item.SubMenu)
+            {
+                if(subItem.IsFatherNode)
+                {
+                    <li>
+                        <a href="javascript:showOrHideMenu('@subItem.ModuleCode')" @Html.Raw(subItem.IsSelect ? "class='active'":"")>@subItem.ModuleName</a>
+                        <span></span>
+                        <ul class="sub_submenu" id="@(subItem.ModuleCode + "_ul")" @Html.Raw(item.IsSelect ? "":"style='display:none'")>
+                            @foreach (var level3subItem in subItem.SubMenu)
+                            {                               
+                                <li>
+                                   <a href="@("/"+level3subItem.ModuleController+"/"+item.ModuleAction)" @Html.Raw(level3subItem.IsSelect ? "class='active'":"")>                                   
+                                        <span class="nosubmenu"></span>
+                                        @level3subItem.ModuleName
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </li>    
+                }
+                else
+                {
+                    <li>
+                        <a href="@("/"+subItem.ModuleController+"/"+subItem.ModuleAction)"  @Html.Raw(subItem.IsSelect ? "class='active'":"")>
+                            <span class="nosubmenu"></span>
+                            @subItem.ModuleName
+                        </a>
+                    </li>
+                }
+            }
+            </ul>
+        </li>         
+    }
+    else
+    {
+        <li>
+            <a href="@("/"+item.ModuleController+"/"+item.ModuleAction)" @Html.Raw(item.IsSelect ? "class='active'":"")>
+                <span class="nosubmenu"></span>
+                @item.ModuleName
+            </a>
+        </li>
+    }
+        
+}

@@ -1,0 +1,180 @@
+﻿@model JobScheduling.Entity.SecurityModel.LoginViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/css")
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <meta content="IE=10" />
+    <title>Login</title>
+    <script>
+        //登录页图片面自适应的函数,绑定在body的onresize事件
+        function DrawImage(FitWidth, FitHeight) {
+            var ImgD = $('#log_picture');
+            var image = new Image();
+            image.src = ImgD.attr("src");
+            if (image.width > 0 && image.height > 0) {
+                if (image.width / image.height >= FitWidth / FitHeight) {
+                    if (image.width > FitWidth) {
+
+                        ImgD.width(FitWidth);
+                        ImgD.height(((image.height * FitWidth) / image.width));
+                    } else {
+                        ImgD.width(image.width);
+                        ImgD.height(image.height);
+                    }
+                } else {
+                    if (image.height > FitHeight) {
+                        ImgD.width(FitHeight);
+                        ImgD.height(((image.width * FitHeight) / image.height));
+                    } else {
+                        ImgD.width(image.width);
+                        ImgD.height(image.height);
+                    }
+                }
+            }
+        }
+        //登录页图片面自适应的函数,绑定在body的onresize事件
+        function img_auto() {
+
+            var ele = $("#log_picture");
+            var ele_width = ele.width();
+            var ele_height = ele.height();
+            var body_width = $(document.body).width();
+            if (body_width >= 1081) {
+                //var body_width = document.body.clientWidth;
+                var ele_current_width = body_width / 2 - 82;
+                ele.attr("width", ele_current_width);
+
+            }
+            if (ele_height <= 450) {
+                return;
+            }
+            else {
+                ele.attr("width", ele_current_width);
+            }
+        }
+
+
+        $(document).ready(function () {
+            if ($("#UserID").val().length == 0) {
+                $("#UserID").focus();
+            } else {
+                $("#Password").focus();
+            }
+            if ($("#errorLabel").html().indexOf("The Password is incorrect") > -1) {
+                $("#Password").focus();
+            }
+        });
+
+
+        function btnSub_onclick() {
+            var userName = $('#UserID').val();
+            var password = $('#Password').val();
+            var istrue = true;
+            if (userName.length == 0) {
+                //$('#UserID').next().attr("class", "field-validation-error").html("* Required");
+                istrue = false;
+            } else {
+                if (userName.length > 50) {
+                   // $('#UserID').next().attr("class", "field-validation-error").html("* Less than 50 characters");
+                    istrue = false;
+                } else {
+                   // $('#UserID').next().attr("class", "field-validation-valid");
+                }
+            }
+            if (password.length == 0) {
+                //$('#Password').next().attr("class", "field-validation-error").html("* Required");
+                istrue = false;
+            } else {
+                if (!(password.length <= 25 && password.length >= 10)) {
+                   // $('#Password').next().attr("class", "field-validation-error").html("* The length of the password must between 10 and 25 characters with no blank spaces");
+                    istrue = false;
+                }
+                //$('#Password').next().attr("class", "field-validation-valid");
+            }
+            if (istrue) {
+                $("form").submit();
+            }
+        }
+
+        var interval=null;
+
+        function checkStyle(needInterval, needRemoveInterval) {
+            //alert(document.getElementById(obj).value);
+
+            if (needInterval && interval!=null)
+                interval = setInterval(function () {
+                    checkStyle(false,false);
+                }, 100);
+
+            if (needRemoveInterval)
+                clearInterval(interval);
+
+            if ($("#UserID").val() == "") {
+                $("#UserID").removeClass("login_input");
+                $("#UserID").addClass("login_userName");
+            }
+            else if ($("#UserID").attr("class") == "login_userName") {
+                $("#UserID").removeClass("login_userName");
+                $("#UserID").addClass("login_input");
+            }
+
+            if ($("#Password").val() == "") {
+                $("#Password").removeClass("login_input");
+                $("#Password").addClass("login_password");
+            }
+            else if ($("#Password").attr("class") == "login_password") {
+                $("#Password").removeClass("login_password");
+                $("#Password").addClass("login_input");
+            }
+        }
+
+
+    </script>
+</head>
+<body onresize="img_auto()">
+    <div id="divLoginMid">
+        <div id="divLoginLeftSide" class="dark_color1" style="background-color: #FFF">
+            <img src="/Content/Images/Pic_Login_small.png" id="log_picture"/>
+        </div>
+        <div id="divLoginRightContainer">
+            <div id="divLoginLogo">
+                <img src="/Content/Images/Logo_login.png" />
+            </div>
+           
+            <div id="divLoginPancel">
+                @using (Html.BeginForm())
+                {       
+                    <ul class="login_infoview">
+                        
+                        <li>
+                            @Html.TextBox("UserID", null, new { @class = "login_userName",onfocus="checkStyle(true,false)", onblur="checkStyle(false,true)",onkeyup="checkStyle(false,false)" })
+                            <br />
+                            @Html.ValidationMessage("UserID")
+                        </li>
+                        <li>
+                            @Html.Password("Password", null, new { @class = "login_password",onfocus="checkStyle(false,false)", onblur="checkStyle(false,false)",onkeyup="checkStyle(false,false)" })
+                            <br />
+                            @Html.ValidationMessage("Password")
+                        </li>
+                        <li>
+                            <label id="errorLabel" style="color: red;">@Html.ValidationMessage("ErrorMessage")</label>
+                        </li>
+                        <li>
+                            <input type="Submit" value="" class="login_btn" onclick="btnSub_onclick()" style="margin-left:80px"/>
+                        </li>
+                        
+                    </ul>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

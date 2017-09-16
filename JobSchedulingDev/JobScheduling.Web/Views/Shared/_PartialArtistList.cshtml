@@ -1,0 +1,35 @@
+﻿
+@model List<JobScheduling.Entity.CommModel.ArtistModel>
+@{
+    ViewBag.Title = "_PartialArtistList";
+}
+
+<ul id="SelectedArtistList">
+                    @{
+                        int j = 0;
+                        if (Model != null && Model.Count > 0)
+                        {
+                            foreach (var item in Model)
+                            {
+                                if (j++ % 2 == 0)
+                                { 
+                        <li class="odd">
+                            <input type="checkbox" value="@item.Artist_Code-@item.EnglishName (@item.ChineseName)">
+                            <a href="#">@item.Artist_Code-@item.EnglishName (@item.ChineseName)
+                            </a>
+                        </li> 
+                                }
+                                else
+                                {
+                        <li class="even">
+                            <input type="checkbox" value ="@item.Artist_Code - @item.EnglishName (@item.ChineseName)">
+                            <a href="#">@item.Artist_Code - @item.EnglishName (@item.ChineseName)
+                            </a>
+                        </li>
+                                }
+                            }
+                        }
+                    }
+                </ul>
+
+ 

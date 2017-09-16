@@ -1,0 +1,168 @@
+﻿@model JobScheduling.Entity.SecurityModel.AccessRightModel
+@{
+    ViewBag.Title = "Group Right";
+}
+
+@section secFunctionBar{
+
+    <ul class="dark_color5">
+        <li>
+            <a href="/Group/UserGroup?ID=@Model.SelectedGroupID">
+                <span class="selectuser">
+                    <img alt="" src="/Content/Images/ico_common.png" />
+                </span>
+                Users
+            </a>
+        </li>
+    </ul>
+}
+
+
+@section Scripts{
+
+    <script src="~/Scripts/Shared/CRUD_COMMOM.js"></script>
+
+    <script src="~/Scripts/AccessRight/AccessRight.js"></script>
+} 
+
+<div class="div_selectuser_content">
+    <div class="div_grouplist_content left">
+        <div class="div_usergroup_content">
+            <div class="div_grouplist_search header left">
+                    @Html.TextBox("GroupName")
+                    <span class="searchicon" onclick="Load_Group()"></span>
+            </div>
+            <div class="div_grouplist left">
+                <ul class="ul_grouplist" id="Grouplist">
+                    @{
+                        int i=0;
+                        foreach (var itemGroup in Model.GroupList)
+                        {
+                            <li @Html.Raw(i % 2 == 0?"class=\"odd\"":"class=\"even\"") >
+                                @Html.ActionLink(itemGroup.GroupName, "Index",new { id = itemGroup.GroupID })
+                            </li>
+                            i++;
+                        }               
+                    }
+                </ul>
+            </div>
+
+   @using (Html.BeginForm("Index", "AccessRight", FormMethod.Post, new { id = "AccessRightForm" }))
+   {
+    <div class="div_grouprightset right">
+            <span class="title">
+                @Html.Hidden("selectedGroupID", Model.SelectedGroupID)
+                @Html.Hidden("ModuleActions")
+                @Model.SelectedGroupName accessright set
+            </span>
+            <div class="div_grouprightsetcontent">
+                <div class="div_group1rightset header">
+                    <ul>
+                        <li style="width: 30px; font-weight: bold;text-align:left;">All</li>
+                        <li style="width: 108px; font-weight: bold;text-align:left;">Model</li>
+                        <li style="width: 79px; font-weight: bold;text-align:left;">Show</li>
+                        <li style="font-weight: bold;">Function</li>
+                    </ul>
+                </div>
+                <div class="div_grouprightsetedlist"> 
+                @{
+                   int j = 0;
+                   if (Model.ModuleRightList!=null)
+                   {
+                   foreach (var itemModule in Model.ModuleRightList)
+                   {
+                    <div @Html.Raw(j % 2 == 0 ? "class=\"row odd\"" : "class=\"row even\"")>
+                        <ul>
+                            <li style="width: 30px;"><span><input type="checkbox" id="chk_@itemModule.ModuleCode" onclick="CheckAll('@itemModule.ModuleCode')" /></span></li>
+                            <li style="width: 128px;"><span>@itemModule.ModuleName </span></li>
+                            <li style="width: 79px;">@Html.CheckBox("chkAction_" + itemModule.ModuleCode + "_Show", itemModule.DicAction["Show"], new { itemid = itemModule.ModuleCode + "_Show" })</li>
+                            <li  >
+                                @foreach (var dicAction in itemModule.DicAction)
+                                {
+                                    if (!dicAction.Key.Equals("Show"))
+                                    {
+                                        <span class="">
+                                            @Html.CheckBox("chkAction_" + itemModule.ModuleCode + "_" + dicAction.Key, dicAction.Value, new { itemid = itemModule.ModuleCode + "_" + dicAction.Key })
+                                            @Html.Label(dicAction.Key)                                                                              
+                                        </span>
+                                        
+                                    }
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                    j++;
+
+                    if (itemModule.SubModule != null)
+                    {
+                        foreach (var subModule in itemModule.SubModule)
+                        {
+                            <div @Html.Raw(j % 2 == 0 ? "class=\"row odd\"" : "class=\"row even\"")>
+                                <ul>
+                                    <li style="width: 30px"><span style="padding-left:13px"><input type="checkbox" id="chk_@subModule.ModuleCode" onclick="CheckAll('@subModule.ModuleCode')" /></span></li>
+                                    <li style="width: 128px"><span style="padding-left:13px">@subModule.ModuleName</span></li>
+                                    <li style="width: 79px;">
+                                        @Html.CheckBox("chkAction_" + subModule.ModuleCode + "_Show", subModule.DicAction["Show"], new { itemid = subModule.ModuleCode + "_Show" })
+                                    </li>
+                                    <li  >
+                                        @foreach (var dicAction in subModule.DicAction)
+                                        {
+                                            if (!dicAction.Key.Equals("Show"))
+                                            {
+                                                <span>
+                                                    @Html.CheckBox("chkAction_" + subModule.ModuleCode + "_" + dicAction.Key, dicAction.Value, new { itemid = subModule.ModuleCode + "_" + dicAction.Key })
+                                                    @Html.Label(dicAction.Key)
+                                                </span>
+                                            }
+                                        }
+                                    </li>
+                                </ul>
+                            </div>
+                            j++;
+
+                            if (subModule.SubModule != null)
+                            {
+                                foreach (var level3SubModule in subModule.SubModule)
+                                {
+                                    <div @Html.Raw(j % 2 == 0 ? "class=\"row odd\"" : "class=\"row even\"")>
+                                        <ul>
+                                            <li style="width: 30px;"><span style="padding-left:23px">@level3SubModule.ModuleName</span></li>                           
+                                            <li style="width: 128px;"><span style="padding-left:23px"><input type="checkbox" id="chk_@level3SubModule.ModuleCode" onclick="CheckAll('@level3SubModule.ModuleCode')" /></span></li>
+                                            <li style="width: 79px;">
+                                                    @Html.CheckBox("chkAction_" + level3SubModule.ModuleCode + "_Show", level3SubModule.DicAction["Show"], new { itemid = level3SubModule.ModuleCode + "_Show" })
+                                            </li>
+                                            <li  >
+                                                @foreach (var dicAction in level3SubModule.DicAction)
+                                                {
+                                                    if (!dicAction.Key.Equals("Show"))
+                                                    {
+                                                        <span>
+                                                            @Html.CheckBox("chkAction_" + level3SubModule.ModuleCode + "_" + dicAction.Key, dicAction.Value, new { itemid = level3SubModule.ModuleCode + "_" + dicAction.Key })
+                                                            @Html.Label(dicAction.Key)
+                                                        </span>
+                                                    }
+                                                }
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    j++;
+                                }
+                            }
+                        }
+                     }
+                   }
+                 }
+                }
+                </div>
+           </div>
+    </div>
+   }
+</div>
+</div>
+</div>
+    
+
+<div class="div_btnbar">
+    <input type="button"  class="input_ok" id="btnCreate" onclick="btnUpdate_onclick()" value="OK" />
+    <input type="button"  class="input_cancel"id="btnBack" onclick="btnCancel_onclick()" value="Cancel" />
+</div>
