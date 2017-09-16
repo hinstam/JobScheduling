@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://service.ppmoney.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="UserServiceImplService" targetNamespace="http://service.ppmoney.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://service.ppmoney.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getInfo" type="tns:getInfo" />
+      <xs:element name="getInfoResponse" type="tns:getInfoResponse" />
+      <xs:element name="getUser" type="tns:getUser" />
+      <xs:element name="getUserResponse" type="tns:getUserResponse" />
+      <xs:complexType name="getUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getUserResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:user" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="user">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="info" type="xs:string" />
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getInfoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getUser">
+    <wsdl:part name="parameters" element="tns:getUser" />
+  </wsdl:message>
+  <wsdl:message name="getInfo">
+    <wsdl:part name="parameters" element="tns:getInfo" />
+  </wsdl:message>
+  <wsdl:message name="getUserResponse">
+    <wsdl:part name="parameters" element="tns:getUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInfoResponse">
+    <wsdl:part name="parameters" element="tns:getInfoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="userService">
+    <wsdl:operation name="getUser">
+      <wsdl:input name="getUser" message="tns:getUser" />
+      <wsdl:output name="getUserResponse" message="tns:getUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getInfo">
+      <wsdl:input name="getInfo" message="tns:getInfo" />
+      <wsdl:output name="getInfoResponse" message="tns:getInfoResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserServiceImplServiceSoapBinding" type="tns:userService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getUser">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getUser">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getUserResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfo">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getInfo">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getInfoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserServiceImplService">
+    <wsdl:port name="UserServiceImplPort" binding="tns:UserServiceImplServiceSoapBinding">
+      <soap:address location="http://localhost:9999/soap/user" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

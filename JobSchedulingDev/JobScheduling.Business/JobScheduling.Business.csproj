@@ -52,6 +52,8 @@
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -69,11 +71,17 @@
     <Compile Include="CommonBL\SelectionBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportBL\PDFSharedBL.cs" />
+    <Compile Include="SchrdulingBL\Test.cs" />
     <Compile Include="SecurityBL\AccessRightBL.cs" />
     <Compile Include="SecurityBL\GroupBL.cs" />
     <Compile Include="SecurityBL\ModuleBL.cs" />
     <Compile Include="SecurityBL\OperationBL.cs" />
     <Compile Include="SecurityBL\UserBL.cs" />
+    <Compile Include="Service References\TestService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JobScheduling.Common\JobScheduling.Common.csproj">
@@ -94,7 +102,30 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Service References\TestService\JobScheduling.Business.TestService.user.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TestService\UserServiceImplService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\TestService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TestService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TestService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TestService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

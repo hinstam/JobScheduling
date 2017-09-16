@@ -9,6 +9,7 @@ using JobScheduling.Entity.SecurityModel;
 
 using JobScheduling.Web.Helpers;
 using JobScheduling.Entity.CommModel;
+using JobScheduling.Business.SchrdulingBL;
 
 namespace JobScheduling.Web.Controllers
 {
@@ -22,6 +23,8 @@ namespace JobScheduling.Web.Controllers
 
         public ActionResult Login()
         {
+            //var test = new Test();
+            //var name = test.GetUser();
             return View();
         }
 
