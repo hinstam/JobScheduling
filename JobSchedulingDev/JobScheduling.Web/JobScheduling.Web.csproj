@@ -185,25 +185,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccessRightController.cs" />
-    <Compile Include="Controllers\BinFileController.cs" />
     <Compile Include="Controllers\CCASController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
-    <Compile Include="Controllers\CountryController.cs" />
-    <Compile Include="Controllers\ExportFileDataController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controllers\ImportBinFileController.cs" />
-    <Compile Include="Controllers\ImportController.cs" />
-    <Compile Include="Controllers\ImportStoreFileController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
-    <Compile Include="Controllers\RegionController.cs" />
-    <Compile Include="Controllers\SpecificCountryController.cs" />
-    <Compile Include="Controllers\StoreFileController.cs" />
-    <Compile Include="Controllers\SummaryReportByCountryController.cs" />
-    <Compile Include="Controllers\TransactionFileController.cs" />
-    <Compile Include="Controllers\UpdateTransController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extensions\ModuleAuthorize.cs" />
     <Compile Include="Extensions\ReportConvert.cs" />
@@ -300,12 +288,12 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="report.aspx" />
     <Content Include="Scripts\AccessRight\AccessRight.js" />
     <Content Include="Scripts\Artiste\ArtisteSelection.js" />
     <Content Include="Scripts\EGS.UI.Common.js" />
     <Content Include="Scripts\Group\UserGroup.js" />
     <None Include="Properties\PublishProfiles\CCAS.pubxml" />
+    <None Include="Properties\PublishProfiles\JobScheduling.pubxml" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
@@ -329,7 +317,6 @@
     <Content Include="Scripts\Shared\Pagination.js" />
     <Content Include="Scripts\Shared\SelectBox.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="ViewPage1.aspx" />
     <Content Include="Views\Shared\ReportControl.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -375,37 +362,7 @@
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\User\New.cshtml" />
-    <Content Include="Views\Country\Edit.cshtml" />
-    <Content Include="Views\Country\New.cshtml" />
-    <Content Include="Views\Country\List.cshtml" />
-    <Content Include="Views\Country\Detail.cshtml" />
-    <Content Include="Views\Import\Index.cshtml" />
-    <Content Include="Views\ImportBinFile\Index.cshtml" />
-    <Content Include="Views\UpdateTrans\Index.cshtml" />
-    <Content Include="Views\Country\Upload.cshtml" />
-    <Content Include="Views\BinFile\New.cshtml" />
-    <Content Include="Views\BinFile\Detail.cshtml" />
-    <Content Include="Views\BinFile\Edit.cshtml" />
-    <Content Include="Views\BinFile\List.cshtml" />
     <Content Include="Views\Shared\_PartialReport.cshtml" />
-    <Content Include="Views\SpecificCountry\Index.cshtml" />
-    <Content Include="Views\Shared\_ReportView.cshtml" />
-    <Content Include="Views\SummaryReportByCountry\Index.cshtml" />
-    <Content Include="Views\TransactionFile\List.cshtml" />
-    <Content Include="Views\ExportFileData\List.cshtml" />
-    <Content Include="Views\ExportFileData\_PartialExportFileData.cshtml" />
-    <Content Include="Views\TransactionFile\Detail.cshtml" />
-    <Content Include="Views\TransactionFile\Edit.cshtml">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="Views\TransactionFile\New.cshtml">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="Views\ImportStoreFile\Index.cshtml" />
-    <Content Include="Views\StoreFile\Detail.cshtml" />
-    <Content Include="Views\StoreFile\Edit.cshtml" />
-    <Content Include="Views\StoreFile\List.cshtml" />
-    <Content Include="Views\StoreFile\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

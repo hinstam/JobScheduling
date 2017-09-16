@@ -63,20 +63,7 @@
   <ItemGroup>
     <Compile Include="CommonDA\InParamDA.cs" />
     <Compile Include="CommonDA\SelectionDA.cs" />
-    <Compile Include="FileDA\BinFileDA.cs" />
-    <Compile Include="FileDA\StoreFileDA.cs" />
-    <Compile Include="FileDA\TransactionFileDA.cs" />
-    <Compile Include="MasterDA\CountryDA.cs" />
-    <Compile Include="MasterDA\DistrictDA.cs" />
-    <Compile Include="MasterDA\ExportFileDataDA.cs" />
-    <Compile Include="MasterDA\ImportBinFileDA.cs" />
-    <Compile Include="MasterDA\ImportStoreFileDA.cs" />
-    <Compile Include="MasterDA\ImportTransactionDA.cs" />
-    <Compile Include="MasterDA\RegionDA.cs" />
-    <Compile Include="MasterDA\SummaryReportByCountryDA.cs" />
-    <Compile Include="MasterDA\UpdateTransDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportDA\SpecificCountryDA.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="SecurityDA\AccessRightDA.cs" />
     <Compile Include="SecurityDA\GroupDA.cs" />
