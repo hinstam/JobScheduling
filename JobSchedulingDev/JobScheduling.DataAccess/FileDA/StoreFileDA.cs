@@ -171,7 +171,7 @@ values(@storeid,@storecode,@districtid,@storefirstdescription,@storelastdescript
 
         public DataSet GetCountryList()
         {
-            string sqlConnectionStr = ConfigurationManager.ConnectionStrings["EGCCASEntities"].ConnectionString;
+            string sqlConnectionStr = ConfigurationManager.ConnectionStrings["JobSchedulingEntities"].ConnectionString;
             using (DataSet ds = SQLHelper.ExecuteDataset(sqlConnectionStr, CommandType.Text, STORE_COUNTRY_SELECT))
             {
                 return ds;
@@ -190,7 +190,7 @@ values(@storeid,@storecode,@districtid,@storefirstdescription,@storelastdescript
 
         public DataSet GetDistrictList(string countryid)
         {
-             string sqlConnectionStr=ConfigurationManager.ConnectionStrings["EGCCASEntities"].ConnectionString;
+             string sqlConnectionStr=ConfigurationManager.ConnectionStrings["JobSchedulingEntities"].ConnectionString;
              List<SqlParameter> sqlParamList = new List<SqlParameter>();
              string where = string.Empty;
              if (!string.IsNullOrEmpty(countryid))
@@ -209,7 +209,7 @@ values(@storeid,@storecode,@districtid,@storefirstdescription,@storelastdescript
 
         public DataSet GetStoreDescriptionList(string districtid)
         {
-             string sqlConnectionStr=ConfigurationManager.ConnectionStrings["EGCCASEntities"].ConnectionString;
+             string sqlConnectionStr=ConfigurationManager.ConnectionStrings["JobSchedulingEntities"].ConnectionString;
              List<SqlParameter> sqlParamList = new List<SqlParameter>();
              string where = string.Empty;
              if (!string.IsNullOrEmpty(districtid))
@@ -229,7 +229,7 @@ values(@storeid,@storecode,@districtid,@storefirstdescription,@storelastdescript
 
         public DataSet GetStoreDescriptionListByRegionIDs(string regionIDs)
         {
-             string sqlConnectionStr=ConfigurationManager.ConnectionStrings["EGCCASEntities"].ConnectionString;
+             string sqlConnectionStr=ConfigurationManager.ConnectionStrings["JobSchedulingEntities"].ConnectionString;
              List<SqlParameter> sqlParamList = new List<SqlParameter>();
              string where = string.Empty;
              if (!string.IsNullOrEmpty(regionIDs))

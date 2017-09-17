@@ -153,12 +153,12 @@
                     <ul class="login_infoview">
                         
                         <li>
-                            @Html.TextBox("UserID", null, new { @class = "login_userName",onfocus="checkStyle(true,false)", onblur="checkStyle(false,true)",onkeyup="checkStyle(false,false)" })
+                            @Html.TextBox("UserID", "admin", new { @class = "login_userName",onfocus="checkStyle(true,false)", onblur="checkStyle(false,true)",onkeyup="checkStyle(false,false)" })
                             <br />
                             @Html.ValidationMessage("UserID")
                         </li>
                         <li>
-                            @Html.Password("Password", null, new { @class = "login_password",onfocus="checkStyle(false,false)", onblur="checkStyle(false,false)",onkeyup="checkStyle(false,false)" })
+                            @Html.Password("Password", "Pw123456789", new { @class = "login_password",onfocus="checkStyle(false,false)", onblur="checkStyle(false,false)",onkeyup="checkStyle(false,false)" })
                             <br />
                             @Html.ValidationMessage("Password")
                         </li>

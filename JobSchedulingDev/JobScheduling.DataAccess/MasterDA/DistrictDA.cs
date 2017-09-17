@@ -33,7 +33,7 @@ namespace JobScheduling.DataAccess.MasterDA
 
         public DataSet GetDistrictList(string RegionIDs)
         {
-            string sqlConnectionStr = ConfigurationManager.ConnectionStrings["EGCCASEntities"].ConnectionString;
+            string sqlConnectionStr = ConfigurationManager.ConnectionStrings["JobSchedulingEntities"].ConnectionString;
             string where = string.Empty;
             List<SqlParameter> sqlParamList = new List<SqlParameter>();
             if (!string.IsNullOrEmpty(RegionIDs))
@@ -52,7 +52,7 @@ namespace JobScheduling.DataAccess.MasterDA
 
         //public DataSet GetDistrictByID(string districtid)
         //{
-        //    string sqlConnectionStr = ConfigurationManager.ConnectionStrings["EGCCASEntities"].ConnectionString;
+        //    string sqlConnectionStr = ConfigurationManager.ConnectionStrings["JobSchedulingEntities"].ConnectionString;
         //    string where = string.Empty;
         //    List<SqlParameter> sqlParamList = new List<SqlParameter>();
         //    if (!string.IsNullOrEmpty(districtid))

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Error";
+    ViewBag.Title = "错误提示";
 }
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
     <div  style="text-align:center;padding: 23% 0 0 0;">
         @if (string.IsNullOrEmpty(ViewBag.ErrorMessage))
         {
-            <h2>Sorry, an error occurred while processing your request. </h2>
+            <h2>在你的请求中出现了一个错误</h2>
         }
         else
         {

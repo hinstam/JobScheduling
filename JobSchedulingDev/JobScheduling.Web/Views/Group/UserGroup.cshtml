@@ -1,6 +1,6 @@
 ﻿@model List<JobScheduling.Entity.SecurityModel.GroupM>
 @{
-    ViewBag.Title = "User Group";
+    ViewBag.Title = "角色用户配置";
 }
 
 @section Scripts{
@@ -20,7 +20,7 @@
                 <span class="back">
                     <img alt="" src="/Content/Images/ico_common.png" />
                 </span>
-                Back
+                返回
             </a>
         </li>
     </ul>
@@ -69,7 +69,7 @@
                 <div class="title">@Html.Raw(Model.Count == 0 ? string.Empty : cg == null ? Model.First().GroupName : cg.GroupName)</div>
                 <div class="description"></div>
                 <div class="div_rightset_search">
-                    <span style="margin-right: 5px; font-size: 14px; margin-left: 15px;">Selected</span>
+                    <span style="margin-right: 5px; font-size: 14px; margin-left: 15px;">已选择</span>
                     @Html.TextBox("SelectedUser")
                     <span class="searchicon" onclick="Load_SelectedUser()"></span>
                 </div>
@@ -88,7 +88,7 @@
         </div>
         <div class="div_rightset_right">
             <div class="div_rightset_search">
-                <span style="margin-right: 5px; font-size: 14px; margin-left: 15px;">All User </span>
+                <span style="margin-right: 5px; font-size: 14px; margin-left: 15px;">全部用户 </span>
                 @Html.TextBox("UserName")
                 <span class="searchicon" onclick="Load_User()"></span>
             </div>

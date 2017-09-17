@@ -1,6 +1,6 @@
 ﻿@model JobScheduling.Entity.SecurityModel.AccessRightModel
 @{
-    ViewBag.Title = "Group Right";
+    ViewBag.Title = "角色权限";
 }
 
 @section secFunctionBar{
@@ -53,15 +53,15 @@
             <span class="title">
                 @Html.Hidden("selectedGroupID", Model.SelectedGroupID)
                 @Html.Hidden("ModuleActions")
-                @Model.SelectedGroupName accessright set
+                @Model.SelectedGroupName 权限设置
             </span>
             <div class="div_grouprightsetcontent">
                 <div class="div_group1rightset header">
                     <ul>
-                        <li style="width: 30px; font-weight: bold;text-align:left;">All</li>
-                        <li style="width: 108px; font-weight: bold;text-align:left;">Model</li>
-                        <li style="width: 79px; font-weight: bold;text-align:left;">Show</li>
-                        <li style="font-weight: bold;">Function</li>
+                        <li style="width: 30px; font-weight: bold;text-align:left;">全部</li>
+                        <li style="width: 108px; font-weight: bold;text-align:left;">模块</li>
+                        <li style="width: 79px; font-weight: bold;text-align:left;">是否显示</li>
+                        <li style="font-weight: bold;">操作页面</li>
                     </ul>
                 </div>
                 <div class="div_grouprightsetedlist"> 

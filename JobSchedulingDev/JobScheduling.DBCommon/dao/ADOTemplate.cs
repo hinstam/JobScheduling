@@ -19,7 +19,7 @@ namespace JobScheduling.DBCommon.dao
 
         public IDbConnection GetConnection()
         {
-            string connectString = System.Configuration.ConfigurationManager.ConnectionStrings["EGCCASEntities"].ConnectionString;
+            string connectString = System.Configuration.ConfigurationManager.ConnectionStrings["JobSchedulingEntities"].ConnectionString;
             //string connectString = "data source=172.30.1.129,9299;initial catalog=EGScrum;user id=sa;password=Pw123456;"; 
 
             if (connection == null)

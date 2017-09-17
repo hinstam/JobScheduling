@@ -58,12 +58,12 @@
     <div class="div_paging">
         <input id="tPages" name="tPages" type="hidden" value="@Model.TotalPages"/>
         <ul>
-            <li class="totalpage">Total Page @Model.TotalPages</li>
-            <li class="prewpage"><a href="#" onclick="BackPage()"><< Prew Page</a></li>
-            <li class="currentpage">Current Page @Model.PageIndex</li>
-            <li class="nextpage"><a href="#" onclick="NextPage()">Next Page >></a></li>
+            <li class="totalpage">总页数 @Model.TotalPages</li>
+            <li class="prewpage"><a href="#" onclick="BackPage()"><< 上一页</a></li>
+            <li class="currentpage">当前页 @Model.PageIndex</li>
+            <li class="nextpage"><a href="#" onclick="NextPage()">下一页 >></a></li>
             <li class="goto">
-                <a href="#" onclick="GotoPage()">Goto</a>
+                <a href="#" onclick="GotoPage()">跳转到</a>
                 @Html.TextBox("GotoPage", "", new { onkeypress = "EnterPress(event)" })
             </li>
         </ul>

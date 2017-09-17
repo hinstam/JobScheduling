@@ -26,7 +26,7 @@ namespace JobScheduling.DataAccess.MasterDA
 
         public List<string>  ComparTable(DataTable dt, ref long ll_skip_num, ref DataTable ldt_same)
         {
-            SqlConnection sqlcn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["EGCCASEntities"].ConnectionString);
+            SqlConnection sqlcn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["JobSchedulingEntities"].ConnectionString);
             SqlBulkCopy bcp = new SqlBulkCopy(sqlcn);
             SqlCommand pos_cmd = new SqlCommand();
             string ls_sql;

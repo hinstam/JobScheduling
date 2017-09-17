@@ -85,7 +85,7 @@ StoreDescription nvarchar(15) COLLATE Chinese_Hong_Kong_Stroke_90_CI_AS null
                     }
                 }
 
-                string sqlConnectionStr=ConfigurationManager.ConnectionStrings["EGCCASEntities"].ConnectionString;
+                string sqlConnectionStr=ConfigurationManager.ConnectionStrings["JobSchedulingEntities"].ConnectionString;
                 using (SqlConnection sqlCon = new SqlConnection(sqlConnectionStr))
                 {
                     sqlCon.Open();

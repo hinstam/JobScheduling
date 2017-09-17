@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title - EG.StyleWebSite</title>
+    <title>@ViewBag.Title - 宝洁作业排班管理系统</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -39,25 +39,26 @@
                                         <img alt="" src="/Content/Images/ico_common.png" />
                                     </span>
                                 </a>
+                                <a class="loginout" style="margin-left:15px;" href="/Home/Logout">登出</a>
                             </span>
                             <span>
-                                <a class="belongsby" href="#">
+@*                                <a class="belongsby" href="#">
                                     @Html.Raw(session.OperationName)
-                                </a>
-                                <a class="loginout" href="/Home/Logout">Login out</a>
+                                </a>*@
+@*                                <a class="loginout" href="/Home/Logout">登出</a>*@
                             </span>
                         </div>
                     </div>
                     <div id="operateMenu" class="operateMenu">
                         <ul>
-                            <li><a href="@Url.Content("/Common/ChangePassword/")">ChangePassword</a></li>
+                            <li><a href="@Url.Content("/Common/ChangePassword/")">修改密码</a></li>
                         </ul>
                     </div>
                     <div class="div_userimg">
-                        <a class="userimg" href="#">
+@*                        <a class="userimg" href="#">
                             <span class="span_userimg">
                                 <img alt="" src="/Content/Images/ico_common.png" /></span>
-                        </a>
+                        </a>*@
                     </div>
                 </div>
             </div>
