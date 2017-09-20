@@ -69,6 +69,8 @@
     <Compile Include="CommModel\ProjectAmountSummary.cs" />
     <Compile Include="CommModel\SystemModel.cs" />
     <Compile Include="CommModel\UploadFile.cs" />
+    <Compile Include="GanttSourceModel\GanttSourceModel.cs" />
+    <Compile Include="GanttSourceModel\GanttValueModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecurityModel\AccessRight.cs" />
     <Compile Include="SecurityModel\GroupM.cs" />
@@ -81,6 +83,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ProductSchedulingModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

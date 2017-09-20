@@ -7,11 +7,9 @@
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/EGScript")
-    @Scripts.Render("~/bundles/jqueryui")
     @Styles.Render("~/Content/jqueryui/css")
-    @RenderSection("Scripts", false)
+    @RenderSection("Css",false)
+@*    @RenderSection("Scripts", false)*@
    @* <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
 </head>
@@ -86,5 +84,10 @@
        
     </div>
      @RenderSection("secArtiseSelectPancel", false)
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/EGScript")
+    @Scripts.Render("~/bundles/jqueryui")
+    @RenderSection("Scripts", false)
 </body>
 </html>

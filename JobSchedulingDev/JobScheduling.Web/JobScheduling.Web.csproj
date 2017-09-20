@@ -192,7 +192,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\ProductSchedulingController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Extensions\CamelJsonResult.cs" />
     <Compile Include="Extensions\ModuleAuthorize.cs" />
     <Compile Include="Extensions\ReportConvert.cs" />
     <Compile Include="Global.asax.cs">
@@ -206,8 +208,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\gantt\gantt.css" />
     <Content Include="Content\Images\dot.png" />
     <Content Include="Content\Images\dot_dark.png" />
+    <Content Include="Content\Images\grid.png" />
+    <Content Include="Content\Images\icon_sprite.png" />
     <Content Include="Content\Images\ico_common.png" />
     <Content Include="Content\Images\loading.gif" />
     <Content Include="Content\Images\loading_2.gif" />
@@ -218,6 +223,7 @@
     <Content Include="Content\Images\Pic_login.png" />
     <Content Include="Content\Images\Pic_Login_small.png" />
     <Content Include="Content\Images\Pic_Welcome.png" />
+    <Content Include="Content\Images\slider_handle.png" />
     <Content Include="Content\Images\testpws.png" />
     <Content Include="Content\Images\testuser.png" />
     <Content Include="Content\My97DatePicker\calendar.js" />
@@ -314,6 +320,7 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\LoginJS.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ProductScheduling\index.js" />
     <Content Include="Scripts\Shared\CRUD_COMMOM.js" />
     <Content Include="Scripts\Shared\InputSearch.js" />
     <Content Include="Scripts\Shared\Pagination.js" />
@@ -365,6 +372,7 @@
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\User\New.cshtml" />
     <Content Include="Views\Shared\_PartialReport.cshtml" />
+    <Content Include="Views\ProductScheduling\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
