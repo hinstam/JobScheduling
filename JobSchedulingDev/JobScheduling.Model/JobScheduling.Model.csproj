@@ -63,12 +63,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseResultModel.cs" />
     <Compile Include="CommModel\ArtistModel.cs" />
     <Compile Include="CommModel\CommonListModel.cs" />
     <Compile Include="CommModel\PagingModel.cs" />
     <Compile Include="CommModel\ProjectAmountSummary.cs" />
     <Compile Include="CommModel\SystemModel.cs" />
     <Compile Include="CommModel\UploadFile.cs" />
+    <Compile Include="ExportResultModel.cs" />
     <Compile Include="GanttSourceModel\GanttSourceModel.cs" />
     <Compile Include="GanttSourceModel\GanttValueModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

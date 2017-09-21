@@ -187,6 +187,7 @@
     <Compile Include="Controllers\AccessRightController.cs" />
     <Compile Include="Controllers\CCASController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs">
       <SubType>Code</SubType>
@@ -195,6 +196,7 @@
     <Compile Include="Controllers\ProductSchedulingController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extensions\CamelJsonResult.cs" />
+    <Compile Include="Extensions\DeleteFileAttribute.cs" />
     <Compile Include="Extensions\ModuleAuthorize.cs" />
     <Compile Include="Extensions\ReportConvert.cs" />
     <Compile Include="Global.asax.cs">
@@ -300,6 +302,7 @@
     <Content Include="Scripts\Gantt\jquery.fn.gantt.js" />
     <Content Include="Scripts\Gantt\jquery.fn.gantt.min.js" />
     <Content Include="Scripts\Group\UserGroup.js" />
+    <Content Include="ExportTpls\ProductScheduling.xlsx" />
     <None Include="Properties\PublishProfiles\CCAS.pubxml" />
     <None Include="Properties\PublishProfiles\JobScheduling.pubxml" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
@@ -376,7 +379,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="upload\" />
+    <Folder Include="Download\" />
+    <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

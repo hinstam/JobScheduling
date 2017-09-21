@@ -6,10 +6,8 @@ using System.Web.Mvc;
 using JobScheduling.Business.SecurityBL;
 using JobScheduling.Model.CommModel;
 using JobScheduling.Entity.SecurityModel;
-
 using JobScheduling.Web.Helpers;
 using JobScheduling.Entity.CommModel;
-using JobScheduling.Business.SchrdulingBL;
 
 namespace JobScheduling.Web.Controllers
 {

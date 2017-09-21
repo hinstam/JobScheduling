@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using JobScheduling.Business.TestService;
 
-namespace JobScheduling.Business.SchrdulingBL
+namespace JobScheduling.Business.SchedulingBL
 {
     public class Test
     {

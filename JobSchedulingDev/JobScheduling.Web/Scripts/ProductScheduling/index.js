@@ -173,10 +173,9 @@ var source = [
 //        }
 //    });
 //});
-console.log(111)
 
 $(".gantt").gantt({
-    source:source,
+    source: source,
     scale: "hours",
     minScale: "hours",
     //maxScale: "hours",
@@ -193,5 +192,14 @@ $(".gantt").gantt({
     //},
     onRender: function () {
         console.log("Gantt has rendered");
+    }
+});
+
+$.post("/ProductScheduling/ExportProductScheduling", function (data) {
+    if (data.IsSuccess) {
+        //window.location = "/File/Download?fileName=" + data.FileName + "&type=1";
+    }
+    else {
+        alert(data.Message);
     }
 });
