@@ -291,6 +291,8 @@
     <Content Include="Scripts\AccessRight\AccessRight.js" />
     <Content Include="Scripts\Artiste\ArtisteSelection.js" />
     <Content Include="Scripts\EGS.UI.Common.js" />
+    <Content Include="Scripts\Gantt\jquery.fn.gantt.js" />
+    <Content Include="Scripts\Gantt\jquery.fn.gantt.min.js" />
     <Content Include="Scripts\Group\UserGroup.js" />
     <None Include="Properties\PublishProfiles\CCAS.pubxml" />
     <None Include="Properties\PublishProfiles\JobScheduling.pubxml" />
