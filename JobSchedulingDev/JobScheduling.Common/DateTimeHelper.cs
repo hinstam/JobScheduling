@@ -13,7 +13,7 @@ namespace JobScheduling.Common
         /// <param name="date"></param>
         /// <param name="format"></param>
         /// <returns></returns>
-        public static string GetFormatDateTime(DateTime date,string format="yyyy-MM-dd HH:mm:ss")
+        public static string GetFormatDateTime(DateTime date, string format = "yyyy-MM-dd hh:mm:ss")
         {
             return date.ToString(format);
         }

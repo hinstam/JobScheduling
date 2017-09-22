@@ -11,6 +11,8 @@ namespace JobScheduling.Web.Controllers
 {
     public class FileController : Controller
     {
+        private const string exportTimeFormat = "yyyyMMddhhmmss";
+
         /// <summary>
         /// 下载
         /// </summary>
@@ -37,17 +39,21 @@ namespace JobScheduling.Web.Controllers
                 throw new FileNotFoundException();
             }
 
+            FileInfo file=new FileInfo(filePath);
+
+            var exportFileSuffix=  DateTimeHelper.GetFormatDateTime(DateTime.Now, exportTimeFormat)+file.Extension;
+
             switch(type)
             {
                 case 1:
-                    fileDownloadName="生产计划表_"+DateTimeHelper.GetFormatDateTime(DateTime.Now);
+                    fileDownloadName = "生产计划表_" + exportFileSuffix;
                     break;
                 case 2:
                     break;
                 case 3:
                     break;
                 default:
-                    fileDownloadName="download_"+DateTimeHelper.GetFormatDateTime(DateTime.Now);
+                    fileDownloadName = "download_" + exportFileSuffix;
                     break;
             }
 

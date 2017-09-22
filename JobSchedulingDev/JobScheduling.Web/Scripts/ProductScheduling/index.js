@@ -197,7 +197,7 @@ $(".gantt").gantt({
 
 $.post("/ProductScheduling/ExportProductScheduling", function (data) {
     if (data.IsSuccess) {
-        //window.location = "/File/Download?fileName=" + data.FileName + "&type=1";
+        window.location = "/File/Download?fileName=" + data.FileName + "&type=1";
     }
     else {
         alert(data.Message);
